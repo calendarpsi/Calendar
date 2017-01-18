@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:text="First option:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:textSize="50sp"
+        android:textStyle="normal|italic"
+        android:fontFamily="cursive"
+        android:textColor="@color/cardview_light_background"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:id="@+id/rv"
+        android:background="#FFF"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true"
+        tools:listitem="@layout/item"
+        android:clipToPadding="false">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/icon"
+        android:id="@+id/fabOption1"
+        app:elevation="12dp"
+        app:backgroundTint="?android:attr/colorForegroundInverse"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="16dp" />
+
+</RelativeLayout>

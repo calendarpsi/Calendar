@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Calendar</string>
+    <string name="title_activity_splash">splash</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="question_dayoff">Do you prefer working every day of the week or having one day off?</string>
+    <string name="question_freetime">Do you want to have free time between classes?</string>
+    <string name="question_morningafternoon">Do you prefer taking classes in the morning or in the afternoon?</string>
+    <string name="question_havelunch">When do you want to have lunch?</string>
+    <string name="question_semester">Which semester are you planning?</string>
+    <string name="question_1stsemester">Select the subjects from your 1st semester...</string>
+    <string name="question_2ndsemester">Select the subjects from your 2nd semester...</string>
+</resources>

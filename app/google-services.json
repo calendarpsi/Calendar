@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "745268239819",
+    "firebase_url": "https://calendar-776dd.firebaseio.com",
+    "project_id": "calendar-776dd",
+    "storage_bucket": "calendar-776dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745268239819:android:fb245c52d0b58b24",
+        "android_client_info": {
+          "package_name": "com.psi.calendar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "745268239819-ludp4ls322t6m85oqfu7qv6qnfbmk5dj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.psi.calendar",
+            "certificate_hash": "EE8D8885FCF570B32C4A81BD7F6F1AACECF0E65D"
+          }
+        },
+        {
+          "client_id": "745268239819-lfhv71b5s3qi22kvkkqas6ch2blq9289.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.psi.calendar",
+            "certificate_hash": "AB18C8A68BE060175D1989D81C2957F6EBF386B5"
+          }
+        },
+        {
+          "client_id": "745268239819-h4is5kfijdpq09paubo5gc2n7dmddqk4.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "745268239819-9l2tbhu2lublbrc1bc0lh9737nlsp4c0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6ZpXOUyX_sgwIlTwYW4zv8DuzQ88Lwo8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "745268239819-h4is5kfijdpq09paubo5gc2n7dmddqk4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

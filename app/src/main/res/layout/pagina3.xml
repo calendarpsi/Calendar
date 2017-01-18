@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="503dp"
+        android:background="#FFFF"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
+            android:id="@+id/imageView"
+            android:layout_marginTop="42dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="18dp" />
+
+        <CheckBox
+            android:text="Thursday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox4"
+            android:layout_alignStart="@+id/checkBox4"
+            android:layout_marginTop="14dp"
+            android:id="@+id/checkBox5"
+            android:onClick="onCheckboxClicked"/>
+
+        <CheckBox
+            android:text="Friday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox5"
+            android:layout_alignStart="@+id/checkBox5"
+            android:layout_marginTop="12dp"
+            android:id="@+id/checkBox6"
+            android:onClick="onCheckboxClicked"/>
+
+        <CheckBox
+            android:text="Wednesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox4"
+            android:layout_below="@+id/checkBox3"
+            android:layout_alignStart="@+id/checkBox3"
+            android:layout_marginTop="14dp"
+            android:onClick="onCheckboxClicked"/>
+
+
+        <CheckBox
+            android:text="Tuesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox3"
+            android:layout_below="@+id/checkBox2"
+            android:layout_alignStart="@+id/checkBox2"
+            android:layout_marginTop="10dp"
+            android:onClick="onCheckboxClicked"/>
+
+        <CheckBox
+            android:text="Monday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox2"
+            android:layout_below="@+id/checkBox1"
+            android:layout_alignStart="@+id/checkBox1"
+            android:layout_marginTop="14dp"
+            android:onClick="onCheckboxClicked"/>
+
+        <CheckBox
+            android:text="Every day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:id="@+id/checkBox1"
+            android:layout_below="@+id/textView3"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_marginStart="11dp"
+            android:onClick="onCheckboxClicked"/>
+
+        <TextView
+            android:text="@string/question_dayoff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:layout_marginTop="16dp"
+            android:layout_below="@+id/imageView"
+            android:layout_alignStart="@+id/imageView" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:background="#FFFF"
+            android:layout_width="match_parent"
+            android:id="@+id/progressBar3"
+            android:progress="45"
+            android:max="100"
+            android:progressDrawable="@drawable/greenprogress"
+            android:layout_weight="1"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_height="7dp" />
+
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="503dp"
+        android:background="#FFFF"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
+            android:id="@+id/imageView"
+            android:layout_marginTop="42dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="18dp" />
+
+        <TextView
+            android:text="@string/question_2ndsemester"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:layout_marginTop="27dp"
+            android:layout_below="@+id/imageView"
+            android:layout_alignStart="@+id/imageView" />
+
+        <CheckBox
+            android:text="Campos y Ondas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox5"
+            android:layout_below="@+id/textView3"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_marginTop="35dp" />
+
+        <CheckBox
+            android:text="Probabilidad y Estadística"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox3"
+            android:layout_below="@+id/checkBox5"
+            android:layout_alignStart="@+id/checkBox5" />
+
+        <CheckBox
+            android:text="Programación I"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox2"
+            android:layout_below="@+id/checkBox3"
+            android:layout_alignStart="@+id/checkBox3" />
+
+        <CheckBox
+            android:text="Análisis de Circuitos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox6"
+            android:layout_below="@+id/checkBox2"
+            android:layout_alignStart="@+id/checkBox2" />
+
+        <CheckBox
+            android:text="Cálculo II"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox4"
+            android:layout_below="@+id/checkBox6"
+            android:layout_alignStart="@+id/checkBox6" />
+        <CheckBox
+            android:text="Check all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox7"
+            android:layout_below="@+id/checkBox4"
+            android:layout_alignStart="@+id/checkBox4"/>
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:background="#FFFF"
+            android:layout_width="match_parent"
+            android:id="@+id/progressBar3"
+            android:progress="100"
+            android:max="100"
+            android:progressDrawable="@drawable/greenprogress"
+            android:layout_weight="1"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_height="7dp" />
+
+    </RelativeLayout>
+</LinearLayout>
