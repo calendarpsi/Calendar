@@ -1,9 +1,11 @@
 package com.psi.calendar;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,7 +31,7 @@ public class CalendarOption extends AppCompatActivity {
         fab=(FloatingActionButton)findViewById(R.id.fabOption1);
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                continuar();
+                exportCalendar();
             }
         });
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -44,18 +46,6 @@ public class CalendarOption extends AppCompatActivity {
         Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
         Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",24));
         Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
-
-        Clases.add(new Clase("Tuesday", "","#FFFFFF",34));
-        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
-        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",24));
-        Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
-
-        Clases.add(new Clase("Wednesday", "","#FFFFFF",34));
-        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
-        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",34));
-        Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
-
-        Clases.add(new Clase("Monday", "","#FFFFFF",34));
         Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
         Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",24));
         Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
@@ -64,11 +54,32 @@ public class CalendarOption extends AppCompatActivity {
         Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
         Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",24));
         Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
+        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
+        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",24));
+        Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
 
         Clases.add(new Clase("Wednesday", "","#FFFFFF",34));
         Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
         Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",34));
-        Clases.add(new Clase("Manuel Veiga a:", "15:00 - 16:00","#009688",24));
+        Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
+        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
+        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",24));
+        Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
+
+        Clases.add(new Clase("Thursday", "","#FFFFFF",34));
+        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
+        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",24));
+        Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
+        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
+        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",24));
+        Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
+
+        Clases.add(new Clase("Wednesday", "","#FFFFFF",34));
+        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
+        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",34));
+        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
+        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",24));
+        Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
 
 
     }
@@ -78,10 +89,26 @@ public class CalendarOption extends AppCompatActivity {
         rv.setAdapter(adapter);
     }
 
-    public void continuar(){
-        Intent intent = new Intent(this,ExportToGC.class);
-        startActivity(intent);
-
+    public void exportCalendar(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("The calendar will upload");
+        alertDialogBuilder
+                .setMessage("¿Are you sure?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(CalendarOption.this,ExportToGC.class);
+                        startActivity(intent);
+                        CalendarOption.this.finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
 }

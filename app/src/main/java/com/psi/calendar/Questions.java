@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import com.psi.calendar.CalendarOption;
-import com.psi.calendar.R;
 
 public class Questions extends AppCompatActivity {
     private ViewPager view1;
@@ -28,7 +26,7 @@ public class Questions extends AppCompatActivity {
     private Button btnContinuar;
 
     private int aux = 0;
-    private boolean everyday = false, first_sem = false, second_sem = false;
+    private boolean everyday = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +46,7 @@ public class Questions extends AppCompatActivity {
     public class PageAdapter extends PagerAdapter {
         @Override
         public int getCount() {
-            return 7;
+            return 5;
         }
 
         @Override
@@ -61,6 +59,7 @@ public class Questions extends AppCompatActivity {
                         //pregunta1();
                     }
                     paginaactual = pagina1;
+
                     break;
                 case 1:
                     if (pagina2 == null) {
@@ -83,28 +82,16 @@ public class Questions extends AppCompatActivity {
                     }
                     paginaactual = pagina4;
                     break;
+
                 case 4:
                     if (pagina5 == null) {
                         pagina5 = (LinearLayout) LayoutInflater.from(Questions.this).inflate(R.layout.pagina5, null);
                         //pregunta5();
+                        btnContinuar.setVisibility(View.VISIBLE);
                     }
                     paginaactual = pagina5;
                     break;
-                case 5:
-                    if (pagina6 == null) {
-                        pagina6 = (LinearLayout) LayoutInflater.from(Questions.this).inflate(R.layout.pagina6, null);
-                        //pregunta6();
-                    }
-                    paginaactual = pagina6;
-                    break;
-                case 6:
-                    if (pagina7 == null) {
-                        pagina7 = (LinearLayout) LayoutInflater.from(Questions.this).inflate(R.layout.pagina7, null);
-                        //pregunta7();
-                        btnContinuar.setVisibility(View.VISIBLE);
-                    }
-                    paginaactual = pagina7;
-                    break;
+
             }
             ViewPager vp = (ViewPager) collection;
             vp.addView(paginaactual, 0);
@@ -155,18 +142,6 @@ public class Questions extends AppCompatActivity {
 
     }
 
-    private void pregunta6() {
-        //TODO rellenar codigo aqui pregunta 6
-        Toast.makeText(this, "Pregunta 6", Toast.LENGTH_SHORT).show();
-
-
-    }
-
-    private void pregunta7() {
-        //TODO rellenar codigo aqui pregunta 7
-        Toast.makeText(this, "Pregunta 7", Toast.LENGTH_SHORT).show();
-    }
-
     //***********************************************************************************
     //  Every time one checkbox is clicked in the 3rd question or in the 5th one,
     //         the program enters here and processes the input.
@@ -195,26 +170,6 @@ public class Questions extends AppCompatActivity {
                 everyday = false;
             }
         }
-        //Checked 1st semester - PAG 5
-        //TODO quitar Toast
-        else if (view.getId() == R.id.checkBox7) {
-            if (checked) {
-                first_sem = true;
-                Toast.makeText(this, "Debug 1st true", Toast.LENGTH_SHORT).show();
-            } else {
-                first_sem = false;
-            }
-        }
-        //Checked 2nd semester - PAG 5
-        //TODO quitar toast
-        else if (view.getId() == R.id.checkBox8) {
-            if (checked) {
-                second_sem = true;
-                Toast.makeText(this, "Debug 2nd true", Toast.LENGTH_SHORT).show();
-            } else {
-                second_sem = false;
-            }
-        }
         //*******************************************************************************
         //
         //  If everyday option is checked (everyday = true) or if more than one day
@@ -231,10 +186,85 @@ public class Questions extends AppCompatActivity {
             aux--;
         }
     }
+    //Page 1 - Checkboxes - "Free time between classes?"
+    public void onRadioButtonClicked1(View view) {
+        switch (view.getId())
+        {
+            //case 'No'
+            case R.id.radioButton4:
+                Log.d("NO", "onRadioButtonClicked1: ");
+                break;
+
+            //Case '1h'
+            case R.id.radioButton3:
+                Log.d("1h", "onRadioButtonClicked1: ");
+                break;
+
+            //case '2h'
+            case R.id.radioButton2:
+                Log.d("2h", "onRadioButtonClicked1: ");
+                break;
+
+            //Case '3h'
+            case R.id.radioButton1:
+                Log.d("3h", "onRadioButtonClicked1: ");
+                break;
+
+            //Case '4h'
+            case R.id.radioButton:
+                Log.d("4h", "onRadioButtonClicked1: ");
+                break;
+        }
+
+    }
+    //Page 2 - Checkboxes - When do you prefer taking classes?
+    public void onRadioButtonClicked2(View view) {
+        switch (view.getId())
+        {
+            //case 'Mornings'
+            case R.id.radioButton4:
+                Log.d("Morning", "onRadioButtonClicked2: ");
+                break;
+
+            //Case '+ mornin - after'
+            case R.id.radioButton3:
+                Log.d("Mornings rather after", "onRadioButtonClicked2: ");
+                break;
+
+            //case '+ after - mornin'
+            case R.id.radioButton2:
+                Log.d("Afternoon rather morn", "onRadioButtonClicked2: ");
+                break;
+
+            //Case 'Afternoons'
+            case R.id.radioButton:
+                Log.d("Afternoons", "onRadioButtonClicked2: ");
+                break;
+        }
+
+    }
+
+    //Page 4 - Checkboxes - "When do you want to have lunch?"
+    public void onRadioButtonClicked4(View view) {
+        switch (view.getId())
+        {
+            //case '1 p.m'
+            case R.id.radioButton1:
+                Log.d("1 p.m", "onRadioButtonClicked4: ");
+                break;
+
+            //Case '2 p.m'
+            case R.id.radioButton2:
+                Log.d("2 p.m", "onRadioButtonClicked4: ");
+                break;
+
+        }
+
+    }
 
     //Siguiente activity
     public void continuar(View view){
-        Intent intent = new Intent(this, CalendarOption.class);
+        Intent intent = new Intent(this, Algorithm.class);
         startActivity(intent);
     }
 

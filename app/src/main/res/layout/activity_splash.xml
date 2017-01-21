@@ -9,11 +9,11 @@
     tools:context="com.psi.calendar.SplashActivity">
 
     <TextView
-        android:text="UVigo Calendar"
+        android:text="Calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
-        android:textSize="50sp"
+        android:textSize="70sp"
         android:textStyle="normal|italic"
         android:fontFamily="cursive"
         android:textColor="@color/cardview_light_background"

@@ -19,7 +19,6 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.model.Event;
-import com.google.api.services.calendar.model.EventAttendee;
 import com.google.api.services.calendar.model.EventDateTime;
 import com.google.api.services.calendar.model.EventReminder;
 
@@ -72,10 +71,7 @@ public class ExportToGC extends AppCompatActivity {
         String[] recurrence = new String[] {"RRULE:FREQ=DAILY;COUNT=1"};
         event.setRecurrence(Arrays.asList(recurrence));
 
-        EventAttendee[] attendees = new EventAttendee[] {
-                new EventAttendee().setEmail("mestrecarting@gmail.com"),
-        };
-        event.setAttendees(Arrays.asList(attendees));
+
 
         EventReminder[] reminderOverrides = new EventReminder[] {
                 new EventReminder().setMethod("email").setMinutes(24 * 60),
@@ -111,11 +107,6 @@ public class ExportToGC extends AppCompatActivity {
         recurrence = new String[] {"RRULE:FREQ=DAILY;COUNT=1"};
         event2.setRecurrence(Arrays.asList(recurrence));
 
-
-        attendees = new EventAttendee[] {
-                new EventAttendee().setEmail("mestrecarting@gmail.com"),
-        };
-        event.setAttendees(Arrays.asList(attendees));
 
         reminderOverrides = new EventReminder[] {
                 new EventReminder().setMethod("email").setMinutes(24 * 60),

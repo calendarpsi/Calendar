@@ -13,13 +13,14 @@
         >
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/icon"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="18dp"
             android:layout_marginTop="42dp"
-            app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
+            />
 
         <TextView
             android:id="@+id/textView3"
@@ -40,19 +41,23 @@
             android:layout_marginTop="35dp">
 
             <RadioButton
-                android:id="@+id/radioButton4"
+                android:id="@+id/radioButton1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="48dp"
                 android:layout_weight="1"
-                android:text="1 p.m" />
+                android:text="1 p.m"
+                android:onClick="onRadioButtonClicked4"/>
+            />
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/radioButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="2 p.m" />
+                android:text="2 p.m"
+                android:onClick="onRadioButtonClicked4"/>
+            />
         </RadioGroup>
 
         <ProgressBar
@@ -60,7 +65,7 @@
             android:background="#FFFF"
             android:layout_width="match_parent"
             android:id="@+id/progressBar3"
-            android:progress="60"
+            android:progress="80"
             android:max="100"
             android:progressDrawable="@drawable/greenprogress"
             android:layout_weight="1"

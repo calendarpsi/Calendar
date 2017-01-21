@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,51 +12,79 @@
         android:background="#FFFF"
         >
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/icon"
             android:id="@+id/imageView"
             android:layout_marginTop="42dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:layout_marginStart="18dp" />
 
-        <CheckBox
-            android:text="2nd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/checkBox7"
-            android:layout_alignStart="@+id/checkBox7"
-            android:layout_marginTop="33dp"
-            android:id="@+id/checkBox8"
-            android:onClick="onCheckboxClicked"/>
-
-        <CheckBox
-            android:text="1st"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
-            android:id="@+id/checkBox7"
-            android:layout_below="@+id/textView3"
-            android:layout_alignStart="@+id/textView3"
-            android:onClick="onCheckboxClicked"/>
-
         <TextView
-            android:text="@string/question_semester"
+            android:text="@string/question_1stsemester"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView3"
-            android:layout_marginBottom="14dp"
-            android:layout_alignBottom="@+id/imageView"
-            android:layout_toEndOf="@+id/imageView"
-            android:layout_marginStart="41dp" />
+            android:layout_marginTop="27dp"
+            android:layout_below="@+id/imageView"
+            android:layout_alignStart="@+id/imageView" />
+
+        <CheckBox
+            android:text="Check all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox6"
+            android:layout_below="@+id/checkBox4"
+            android:layout_alignEnd="@+id/checkBox2" />
+
+        <CheckBox
+            android:text="Cálculo I"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox4"
+            android:layout_below="@+id/checkBox5"
+            android:layout_alignStart="@+id/checkBox6" />
+
+        <CheckBox
+            android:text="Fundamentos de mecánica y termodinámica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox5"
+            android:layout_below="@+id/checkBox1"
+            android:layout_alignStart="@+id/checkBox4" />
+
+        <CheckBox
+            android:text="Fundamentos de empresa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox1"
+            android:layout_below="@+id/checkBox3"
+            android:layout_alignStart="@+id/checkBox3" />
+
+        <CheckBox
+            android:text="Arquitectura de Ordenadores"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox3"
+            android:layout_below="@+id/checkBox2"
+            android:layout_alignStart="@+id/checkBox2" />
+
+        <CheckBox
+            android:text="Álgebra I"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox2"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/textView3"
+            android:layout_alignStart="@+id/textView3" />
 
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
             android:background="#FFFF"
             android:layout_width="match_parent"
             android:id="@+id/progressBar3"
-            android:progress="75"
+            android:progress="100"
             android:max="100"
             android:progressDrawable="@drawable/greenprogress"
             android:layout_weight="1"
@@ -66,4 +93,4 @@
             android:layout_height="7dp" />
 
     </RelativeLayout>
-    </LinearLayout>
+</LinearLayout>

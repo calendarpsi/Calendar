@@ -13,14 +13,15 @@
         android:background="#FFFF"
         >
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/icon"
             android:id="@+id/imageView"
             android:layout_marginTop="42dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="18dp" />
+            android:layout_marginStart="18dp"
+            android:layout_alignParentBottom="false" />
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -33,28 +34,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/radioButton4"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked2"/>
 
             <RadioButton
                 android:text="I prefer in the morning rather than in the afternoon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/radioButton3"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked2"/>
 
             <RadioButton
                 android:text="I prefer in the afternoon rather than in the morning"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/radioButton2"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked2"/>
 
             <RadioButton
                 android:text="I prefer having classes in the afternoon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/radioButton"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked2"/>
         </RadioGroup>
 
         <TextView
@@ -72,7 +77,7 @@
             android:layout_width="match_parent"
             android:id="@+id/progressBar3"
             android:max="100"
-            android:progress="30"
+            android:progress="40"
             android:progressDrawable="@drawable/greenprogress"
             android:layout_weight="1"
             android:layout_alignParentBottom="true"

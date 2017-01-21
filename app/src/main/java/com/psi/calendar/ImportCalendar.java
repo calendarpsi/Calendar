@@ -1,6 +1,6 @@
 package com.psi.calendar;
 
-import android.support.design.widget.FloatingActionButton;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.google.android.gms.common.ConnectionResult;
@@ -29,6 +29,8 @@ import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,7 +42,7 @@ import pub.devrel.easypermissions.EasyPermissions;
 
 public class ImportCalendar extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
     GoogleAccountCredential mCredential;
-    private FloatingActionButton btnImportar;
+    private ImageView importCalendar;
     ProgressDialog mProgress;
     static final int REQUEST_ACCOUNT_PICKER = 1000;
     static final int REQUEST_AUTHORIZATION = 1001;
@@ -58,8 +60,8 @@ public class ImportCalendar extends AppCompatActivity implements EasyPermissions
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_import_calendar);
-        btnImportar = (FloatingActionButton) findViewById(R.id.floatingActionButton);
-        btnImportar.setOnClickListener(new View.OnClickListener(){
+        importCalendar = (ImageView) findViewById(R.id.importCalendar);
+        importCalendar.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 getResultsFromApi();
             }
@@ -272,7 +274,7 @@ public class ImportCalendar extends AppCompatActivity implements EasyPermissions
             JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
             mService = new com.google.api.services.calendar.Calendar.Builder(
                     transport, jsonFactory, credential)
-                    .setApplicationName("UvigoCalendar")
+                    .setApplicationName("Calendar")
                     .build();
         }
 
@@ -335,7 +337,7 @@ public class ImportCalendar extends AppCompatActivity implements EasyPermissions
         @Override
         protected void onPostExecute(List<String> output) {
             mProgress.hide();
-            btnImportar.setVisibility(View.GONE);
+            importCalendar.setVisibility(View.GONE);
             if (output == null || output.size() == 0) {
                 System.out.println("No hay resultados");
                 continuar();
