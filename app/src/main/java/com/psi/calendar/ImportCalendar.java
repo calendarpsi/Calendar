@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -281,7 +282,7 @@ public class ImportCalendar extends AppCompatActivity implements EasyPermissions
             JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
             mService = new com.google.api.services.calendar.Calendar.Builder(
                     transport, jsonFactory, credential)
-                    .setApplicationName("UvigoCalendar")
+                    .setApplicationName("Calendar")
                     .build();
         }
 
@@ -329,11 +330,13 @@ public class ImportCalendar extends AppCompatActivity implements EasyPermissions
                             // the start date.
                             start = event.getStart().getDate();
                         }
+
                         eventStrings.add(String.format("%s#%s#%s", event.getSummary(), start,end));
                     }
                 }
             }
-
+            Algorithm.setInput(eventStrings);
+            Log.d("RAW INPUT", "getDataFromApi: "+eventStrings);
             return eventStrings;
         }
 
@@ -352,7 +355,7 @@ public class ImportCalendar extends AppCompatActivity implements EasyPermissions
                 continuar();
 
             } else {
-                output.add(0, "Calendrio obtenido de Google CalendarOption API:");
+                //output.add(0, "Calendrio obtenido de Google CalendarOption API:");
                 System.out.println(TextUtils.join("\n", output));
                 continuar();
             }

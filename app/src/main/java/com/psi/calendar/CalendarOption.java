@@ -25,7 +25,6 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.DateTime;
-import com.google.api.services.calendar.CalendarScopes;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.EventDateTime;
 import com.google.api.services.calendar.model.EventReminder;
@@ -39,8 +38,6 @@ public class CalendarOption extends AppCompatActivity {
     private List<Clase> Clases;
     private RecyclerView rv;
     private FloatingActionButton fab;
-    private static final String PREF_ACCOUNT_NAME = "accountName";
-    private static final String[] SCOPES = { CalendarScopes.CALENDAR};
     private Context context;
     static final int REQUEST_AUTHORIZATION = 1001;
     static final int REQUEST_GOOGLE_PLAY_SERVICES = 1002;
@@ -49,7 +46,7 @@ public class CalendarOption extends AppCompatActivity {
             , wednesday = new ArrayList<>(), thursday = new ArrayList<>(), friday = new ArrayList<>();
 
 
-    private ArrayList<Sesion> timetable = new ArrayList<Sesion>();
+    private ArrayList<Sesion> timetable = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +68,9 @@ public class CalendarOption extends AppCompatActivity {
             case "3":
                 timetable = (ArrayList<Sesion>) getIntent().getSerializableExtra("time_table_3");
                 Log.d("Key: 3", "onCreate: "+timetable);
+                break;
+            default:
+                Log.e("Error switch.", "onCreate_Calendar option: FATAL ERROR! ");
                 break;
         }
         //Inicialize
@@ -213,82 +213,169 @@ public class CalendarOption extends AppCompatActivity {
     private void scheduleEvents() {
 
         GoogleAccountCredential credentials =credential;
-        ArrayList<Event> events = new ArrayList<Event>();
-
-        for (int i = 0; i < timetable.size(); i++) {
-
+        ArrayList<Event> events = new ArrayList<>();
+        for (int i = 0; i < monday.size() ; i++) {
+            Sesion aux = monday.get(i);
             Event event = new Event()
-                    .setSummary(timetable.get(i).getNombre()+" "+timetable.get(i).getTipoGrupo())
+                    .setSummary(aux.getNombre()+" "+aux.getTipoGrupo())
                     .setLocation("Escola de Enxeñaría de Telecomunicación")
                     .setDescription("A chance to learn technology in deep.");
 
-            DateTime startDateTime = new DateTime("2017-01-")
+            DateTime startDateTime = new DateTime("2017-01-16T" +aux.getHora()+":00:00+01:00");
+            EventDateTime start = new EventDateTime()
+                    .setDateTime(startDateTime)
+                    .setTimeZone("Europe/Madrid");
+            event.setStart(start);
+
+            DateTime endDateTime = new DateTime("2017-01-16T" +(aux.getHora()+aux.getDuracion())+":00:00+01:00");
+            EventDateTime end = new EventDateTime()
+                    .setDateTime(endDateTime)
+                    .setTimeZone("Europe/Madrid");
+            event.setEnd(end);
+
+            String[] recurrence = new String[] {"RRULE:FREQ=WEEKLY;COUNT=20"};
+            event.setRecurrence(Arrays.asList(recurrence));
+
+            EventReminder[] reminderOverrides = new EventReminder[] {
+                    new EventReminder().setMethod("email").setMinutes(24 * 60),
+                    new EventReminder().setMethod("popup").setMinutes(10),
+            };
+            Event.Reminders reminders = new Event.Reminders()
+                    .setUseDefault(false)
+                    .setOverrides(Arrays.asList(reminderOverrides));
+            event.setReminders(reminders);
+            events.add(event);
         }
+        for (int i = 0; i < tuesday.size() ; i++) {
+            Sesion aux = tuesday.get(i);
+            Event event = new Event()
+                    .setSummary(aux.getNombre()+" "+aux.getTipoGrupo())
+                    .setLocation("Escola de Enxeñaría de Telecomunicación")
+                    .setDescription("A chance to learn technology in deep.");
 
-        DateTime startDateTime = new DateTime("2017-01-20T09:00:00+01:00");
-        EventDateTime start = new EventDateTime()
-                .setDateTime(startDateTime)
-                .setTimeZone("Europe/Madrid");
-        event.setStart(start);
+            DateTime startDateTime = new DateTime("2017-01-17T" +aux.getHora()+":00:00+01:00");
 
-        DateTime endDateTime = new DateTime("2017-01-20T11:00:00+01:00");
-        EventDateTime end = new EventDateTime()
-                .setDateTime(endDateTime)
-                .setTimeZone("Europe/Madrid");
-        event.setEnd(end);
+            EventDateTime start = new EventDateTime()
+                    .setDateTime(startDateTime)
+                    .setTimeZone("Europe/Madrid");
+            event.setStart(start);
 
-        String[] recurrence = new String[] {"RRULE:FREQ=DAILY;COUNT=1"};
-        event.setRecurrence(Arrays.asList(recurrence));
+            DateTime endDateTime = new DateTime("2017-01-17T" +(aux.getHora()+aux.getDuracion())+":00:00+01:00");
+            EventDateTime end = new EventDateTime()
+                    .setDateTime(endDateTime)
+                    .setTimeZone("Europe/Madrid");
+            event.setEnd(end);
 
+            String[] recurrence = new String[] {"RRULE:FREQ=WEEKLY;COUNT=20"};
+            event.setRecurrence(Arrays.asList(recurrence));
 
+            EventReminder[] reminderOverrides = new EventReminder[] {
+                    new EventReminder().setMethod("email").setMinutes(24 * 60),
+                    new EventReminder().setMethod("popup").setMinutes(10),
+            };
+            Event.Reminders reminders = new Event.Reminders()
+                    .setUseDefault(false)
+                    .setOverrides(Arrays.asList(reminderOverrides));
+            event.setReminders(reminders);
+            events.add(event);
+        }
+        for (int i = 0; i <wednesday.size() ; i++) {
+            Sesion aux = wednesday.get(i);
+            Event event = new Event()
+                    .setSummary(aux.getNombre()+" "+aux.getTipoGrupo())
+                    .setLocation("Escola de Enxeñaría de Telecomunicación")
+                    .setDescription("A chance to learn technology in deep.");
 
-        EventReminder[] reminderOverrides = new EventReminder[] {
-                new EventReminder().setMethod("email").setMinutes(24 * 60),
-                new EventReminder().setMethod("popup").setMinutes(10),
-        };
-        Event.Reminders reminders = new Event.Reminders()
-                .setUseDefault(false)
-                .setOverrides(Arrays.asList(reminderOverrides));
-        event.setReminders(reminders);
+            DateTime startDateTime = new DateTime("2017-01-18T" +aux.getHora()+":00:00+01:00");
+            EventDateTime start = new EventDateTime()
+                    .setDateTime(startDateTime)
+                    .setTimeZone("Europe/Madrid");
+            event.setStart(start);
 
-        String calendarId = "primary";
-        //event.setId("qwertyuyui");
-        events.add(event);
+            DateTime endDateTime = new DateTime("2017-01-18T" +(aux.getHora()+aux.getDuracion())+":00:00+01:00");
+            EventDateTime end = new EventDateTime()
+                    .setDateTime(endDateTime)
+                    .setTimeZone("Europe/Madrid");
+            event.setEnd(end);
 
+            String[] recurrence = new String[] {"RRULE:FREQ=WEEKLY;COUNT=20"};
+            event.setRecurrence(Arrays.asList(recurrence));
 
-        Event event2 = new Event()
-                .setSummary("Google I/O 2018")
-                .setLocation("800 Howard St., San Francisco, CA 94103")
-                .setDescription("A chance to hear more about Google's developer products.");
+            EventReminder[] reminderOverrides = new EventReminder[] {
+                    new EventReminder().setMethod("email").setMinutes(24 * 60),
+                    new EventReminder().setMethod("popup").setMinutes(10),
+            };
+            Event.Reminders reminders = new Event.Reminders()
+                    .setUseDefault(false)
+                    .setOverrides(Arrays.asList(reminderOverrides));
+            event.setReminders(reminders);
+            events.add(event);
+        }
+        for (int i = 0; i < thursday.size() ; i++) {
+            Sesion aux = thursday.get(i);
+            Event event = new Event()
+                    .setSummary(aux.getNombre()+" "+aux.getTipoGrupo())
+                    .setLocation("Escola de Enxeñaría de Telecomunicación")
+                    .setDescription("A chance to learn technology in deep.");
 
-        startDateTime = new DateTime("2017-01-20T11:00:00+01:00");
-        start = new EventDateTime()
-                .setDateTime(startDateTime)
-                .setTimeZone("Europe/Madrid");
-        event2.setStart(start);
+            DateTime startDateTime = new DateTime("2017-01-19T" +aux.getHora()+":00:00+01:00");
+            EventDateTime start = new EventDateTime()
+                    .setDateTime(startDateTime)
+                    .setTimeZone("Europe/Madrid");
+            event.setStart(start);
 
-        endDateTime = new DateTime("2017-01-20T11:30:00+01:00");
-        end = new EventDateTime()
-                .setDateTime(endDateTime)
-                .setTimeZone("Europe/Madrid");
-        event2.setEnd(end);
+            DateTime endDateTime = new DateTime("2017-01-19T" +(aux.getHora()+aux.getDuracion())+":00:00+01:00");
+            EventDateTime end = new EventDateTime()
+                    .setDateTime(endDateTime)
+                    .setTimeZone("Europe/Madrid");
+            event.setEnd(end);
 
-        recurrence = new String[] {"RRULE:FREQ=DAILY;COUNT=1"};
-        event2.setRecurrence(Arrays.asList(recurrence));
+            String[] recurrence = new String[] {"RRULE:FREQ=WEEKLY;COUNT=20"};
+            event.setRecurrence(Arrays.asList(recurrence));
 
+            EventReminder[] reminderOverrides = new EventReminder[] {
+                    new EventReminder().setMethod("email").setMinutes(24 * 60),
+                    new EventReminder().setMethod("popup").setMinutes(10),
+            };
+            Event.Reminders reminders = new Event.Reminders()
+                    .setUseDefault(false)
+                    .setOverrides(Arrays.asList(reminderOverrides));
+            event.setReminders(reminders);
+            events.add(event);
+        }
+        for (int i = 0; i < friday.size() ; i++) {
+            Sesion aux = friday.get(i);
+            Event event = new Event()
+                    .setSummary(aux.getNombre()+" "+aux.getTipoGrupo())
+                    .setLocation("Escola de Enxeñaría de Telecomunicación")
+                    .setDescription("A chance to learn technology in deep.");
 
-        reminderOverrides = new EventReminder[] {
-                new EventReminder().setMethod("email").setMinutes(24 * 60),
-                new EventReminder().setMethod("popup").setMinutes(10),
-        };
-        reminders = new Event.Reminders()
-                .setUseDefault(false)
-                .setOverrides(Arrays.asList(reminderOverrides));
-        event2.setReminders(reminders);
-        //event2.setId("asddfgh");
-        events.add(event2);
+            DateTime startDateTime = new DateTime("2017-01-20T" +aux.getHora()+":00:00+01:00");
+            EventDateTime start = new EventDateTime()
+                    .setDateTime(startDateTime)
+                    .setTimeZone("Europe/Madrid");
+            event.setStart(start);
 
-        new CalendarOption.ScheduleEventTask(credentials, events, calendarId).execute();
+            DateTime endDateTime = new DateTime("2017-01-20T" +(aux.getHora()+aux.getDuracion())+":00:00+01:00");
+            EventDateTime end = new EventDateTime()
+                    .setDateTime(endDateTime)
+                    .setTimeZone("Europe/Madrid");
+            event.setEnd(end);
+
+            String[] recurrence = new String[] {"RRULE:FREQ=WEEKLY;COUNT=20"};
+            event.setRecurrence(Arrays.asList(recurrence));
+
+            EventReminder[] reminderOverrides = new EventReminder[] {
+                    new EventReminder().setMethod("email").setMinutes(24 * 60),
+                    new EventReminder().setMethod("popup").setMinutes(10),
+            };
+            Event.Reminders reminders = new Event.Reminders()
+                    .setUseDefault(false)
+                    .setOverrides(Arrays.asList(reminderOverrides));
+            event.setReminders(reminders);
+            events.add(event);
+        }
+        new CalendarOption.ScheduleEventTask(credentials, events, "primary").execute();
 
     }
     @Override
@@ -309,9 +396,9 @@ public class CalendarOption extends AppCompatActivity {
         private Exception mLastError;
 
         /***
-         * @param credential
-         * @param events
-         * @param calendarId
+         * @param credential User accounts credentials
+         * @param events Events to upload
+         * @param calendarId Name of the calendar
          */
         public ScheduleEventTask(GoogleAccountCredential credential, ArrayList<Event> events, String calendarId) {
 
@@ -330,7 +417,7 @@ public class CalendarOption extends AppCompatActivity {
 
         @Override
         protected ArrayList<Event> doInBackground(Void... voids) {
-            ArrayList<Event> eventArrayList = new ArrayList<Event>();
+            ArrayList<Event> eventArrayList = new ArrayList<>();
             try {
                 Log.d("AsyncTask", "doInBackground: jsldajf");
                 for (int i = 0; i < events.size(); i++) {
@@ -345,15 +432,6 @@ public class CalendarOption extends AppCompatActivity {
             }
             return eventArrayList;
         }
-
-        /**
-         * Fetch a list of the next 10 events from the primary calendar.
-         *
-         * @return List of Strings describing returned events.
-         * @throws IOException
-         */
-
-
         @Override
         protected void onPreExecute() {
 

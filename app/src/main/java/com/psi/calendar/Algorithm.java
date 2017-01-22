@@ -2,20 +2,23 @@ package com.psi.calendar;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Algorithm extends AppCompatActivity {
 
 
 
-    private ArrayList<Sesion> time_table_1 = new ArrayList<Sesion>();
-    private ArrayList<Sesion> time_table_2 = new ArrayList<Sesion>();
-    private ArrayList<Sesion> time_table_3 = new ArrayList<Sesion>();
+    private static List<String> raw_input = new ArrayList<>();
+    private ArrayList<Sesion> time_table_1 = new ArrayList<>();
+    private ArrayList<Sesion> time_table_2 = new ArrayList<>();
+    private ArrayList<Sesion> time_table_3 = new ArrayList<>();
 
 
 
@@ -32,9 +35,11 @@ public class Algorithm extends AppCompatActivity {
             }
         });
 
+        Log.e("Algorithm", "onCreate: "+raw_input);
 
         // EXPORT TO CALENDAR --------------------
         //int hora, int duracion, int dia, String nombre, String tipo
+        //TODO cambiar estos objetos por las tres salidas del algoritmo: opcion1, opcion2, opcion3
         time_table_1.add(new Sesion (10, 2, 16, "AO", "Teoría"));
         time_table_1.add(new Sesion (12, 2, 16, "EMP", "Teoría"));
         time_table_1.add(new Sesion (14, 2, 16, "CAL-I", "Teoría"));
@@ -70,6 +75,9 @@ public class Algorithm extends AppCompatActivity {
 
     public ArrayList<Sesion> getPrueba() {
         return time_table_1;
+    }
+    public static void setInput(List<String> input) {
+        Algorithm.raw_input = input;
     }
 
 }
