@@ -31,53 +31,64 @@
             android:layout_alignStart="@+id/imageView" />
 
         <CheckBox
-            android:text="Check all"
+            android:text="CHECK ALL!"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBox6"
-            android:layout_below="@+id/checkBox4"
-            android:layout_alignEnd="@+id/checkBox2" />
+            android:layout_below="@+id/checkBox5"
+            android:layout_alignStart="@+id/checkBox5"
+            android:onClick="onRadioButtonClicked5"/>
 
         <CheckBox
             android:text="Cálculo I"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/checkBox4"
-            android:layout_below="@+id/checkBox5"
-            android:layout_alignStart="@+id/checkBox6" />
+            android:id="@+id/checkBox5"
+            android:layout_below="@+id/checkBox4"
+            android:layout_alignStart="@+id/checkBox4"
+            android:onClick="onRadioButtonClicked5"/>
+
 
         <CheckBox
             android:text="Fundamentos de mecánica y termodinámica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/checkBox5"
-            android:layout_below="@+id/checkBox1"
-            android:layout_alignStart="@+id/checkBox4" />
+            android:id="@+id/checkBox4"
+            android:layout_below="@+id/checkBox3"
+            android:layout_alignStart="@+id/checkBox3"
+            android:onClick="onRadioButtonClicked5"/>
+
 
         <CheckBox
             android:text="Fundamentos de empresa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/checkBox1"
-            android:layout_below="@+id/checkBox3"
-            android:layout_alignStart="@+id/checkBox3" />
+            android:id="@+id/checkBox3"
+            android:layout_below="@+id/checkBox2"
+            android:layout_alignStart="@+id/checkBox2"
+            android:onClick="onRadioButtonClicked5"/>
+
 
         <CheckBox
             android:text="Arquitectura de Ordenadores"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/checkBox3"
-            android:layout_below="@+id/checkBox2"
-            android:layout_alignStart="@+id/checkBox2" />
+            android:id="@+id/checkBox2"
+            android:layout_below="@+id/checkBox1"
+            android:layout_alignStart="@+id/checkBox1"
+            android:onClick="onRadioButtonClicked5"/>
+
 
         <CheckBox
             android:text="Álgebra I"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/checkBox2"
+            android:id="@+id/checkBox1"
             android:layout_marginTop="25dp"
             android:layout_below="@+id/textView3"
-            android:layout_alignStart="@+id/textView3" />
+            android:layout_alignStart="@+id/textView3"
+            android:onClick="onRadioButtonClicked5"/>
+
 
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -91,6 +102,17 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
             android:layout_height="7dp" />
+
+
+        <ImageView
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/ic_next"
+            android:id="@+id/imageView2"
+            android:onClick="onButtonClicked"
+            android:layout_width="50dp"
+            android:layout_marginBottom="27dp"
+            android:layout_above="@+id/progressBar3"
+            android:layout_alignEnd="@+id/checkBox3" />
 
     </RelativeLayout>
 </LinearLayout>

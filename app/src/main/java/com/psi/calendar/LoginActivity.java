@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
             if (! isDeviceOnline()) {
                 Toast.makeText(LoginActivity.this, "Network not available. Logout to retry login.", Toast.LENGTH_SHORT).show();
             }
-            ExportToGC.setGoogleCredential(mCredential);
+            CalendarOption.setGoogleCredential(mCredential);
             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
             startActivity(intent);
             finish();

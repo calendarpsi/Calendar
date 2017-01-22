@@ -1,21 +1,5 @@
 package com.psi.calendar;
 
-import android.media.Image;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.api.client.extensions.android.http.AndroidHttp;
-import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
-import com.google.api.client.googleapis.extensions.android.gms.auth.GooglePlayServicesAvailabilityIOException;
-import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
-import com.google.api.client.http.HttpTransport;
-import com.google.api.client.json.JsonFactory;
-import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.api.client.util.ExponentialBackOff;
-import com.google.api.services.calendar.CalendarScopes;
-import com.google.api.client.util.DateTime;
-import com.google.api.services.calendar.model.*;
 import android.Manifest;
 import android.accounts.AccountManager;
 import android.app.Dialog;
@@ -26,17 +10,37 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.api.client.extensions.android.http.AndroidHttp;
+import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
+import com.google.api.client.googleapis.extensions.android.gms.auth.GooglePlayServicesAvailabilityIOException;
+import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.util.DateTime;
+import com.google.api.client.util.ExponentialBackOff;
+import com.google.api.services.calendar.CalendarScopes;
+import com.google.api.services.calendar.model.CalendarList;
+import com.google.api.services.calendar.model.CalendarListEntry;
+import com.google.api.services.calendar.model.Event;
+import com.google.api.services.calendar.model.Events;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -67,7 +71,7 @@ public class ImportCalendar extends AppCompatActivity implements EasyPermissions
             }
         });
         mProgress = new ProgressDialog(this);
-        mProgress.setMessage("Obteniendo el calendario ...");
+        mProgress.setMessage("Getting the calendar ...");
         // Initialize credentials and service object.
         mCredential = GoogleAccountCredential.usingOAuth2(getApplicationContext(), Arrays.asList(SCOPES)).setBackOff(new ExponentialBackOff());
     }
@@ -274,7 +278,7 @@ public class ImportCalendar extends AppCompatActivity implements EasyPermissions
             JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
             mService = new com.google.api.services.calendar.Calendar.Builder(
                     transport, jsonFactory, credential)
-                    .setApplicationName("Calendar")
+                    .setApplicationName("UvigoCalendar")
                     .build();
         }
 
@@ -315,12 +319,13 @@ public class ImportCalendar extends AppCompatActivity implements EasyPermissions
 
                     for (Event event : items) {
                         DateTime start = event.getStart().getDateTime();
+                        DateTime end = event.getEnd().getDateTime();
                         if (start == null) {
                             // All-day events don't have start times, so just use
                             // the start date.
                             start = event.getStart().getDate();
                         }
-                        eventStrings.add(String.format("%s  +   %s", event.getSummary(), start));
+                        eventStrings.add(String.format("%s#%s#%s", event.getSummary(), start,end));
                     }
                 }
             }

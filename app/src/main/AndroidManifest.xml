@@ -31,7 +31,6 @@
         <activity android:name=".Questions" />
         <activity android:name=".CalendarOption" />
         <activity android:name=".Algorithm" />
-        <activity android:name=".ExportToGC" />
         <activity android:name=".MainActivity" />
         <activity android:name=".AlgorithmOptions"></activity>
     </application>
