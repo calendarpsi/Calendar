@@ -39,6 +39,7 @@ import com.google.api.services.calendar.model.Events;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -304,8 +305,9 @@ public class ImportCalendar extends AppCompatActivity implements EasyPermissions
          * @throws IOException
          */
         private List<String> getDataFromApi() throws IOException {
-            DateTime now = new DateTime(System.currentTimeMillis());
-            DateTime oneWeek = new DateTime(System.currentTimeMillis() + TimeUnit.MILLISECONDS.convert(7, TimeUnit.DAYS));
+            GregorianCalendar gregorianCalendar = new GregorianCalendar(2017,0,16,0,0);
+            DateTime now = new DateTime(gregorianCalendar.getTimeInMillis());
+            DateTime oneWeek = new DateTime(gregorianCalendar.getTimeInMillis() + TimeUnit.MILLISECONDS.convert(7, TimeUnit.DAYS));
             List<String> eventStrings = new ArrayList<>();
             CalendarList calendarList = mService.calendarList().list().execute();
             for (CalendarListEntry calendar : calendarList.getItems()) {
