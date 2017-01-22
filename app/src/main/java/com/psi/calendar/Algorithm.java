@@ -22,11 +22,9 @@ public class Algorithm extends AppCompatActivity {
     private static Horario elHorario;
     ProgressDialog mProgress;
     private static int question2 = 0;
-
-
-
     private static ArrayList<String> question3 = null;
     private static int question4 = 0;
+    private static ArrayList<String> question5 = null;
 
 
 
@@ -39,7 +37,9 @@ public class Algorithm extends AppCompatActivity {
         mProgress = new ProgressDialog(this);
         mProgress.setMessage("The algorithm is working ...");
         mProgress.show();
-        //CODIGO MAIN:
+
+        //deleteSubjects(question5);
+        //ALGORITHM CODE ------------------------------------------------------------------------------->
         elHorario = new Horario();
         try {
             elHorario.main(raw_input);
@@ -106,6 +106,55 @@ public class Algorithm extends AppCompatActivity {
 
     }
 
+    private void deleteSubjects(ArrayList<String> question5) {
+        boolean alg=true, ao=true, emp=true, fmt=true, cal1=true;
+        ArrayList<String> result = new ArrayList<>();
+        boolean dont_touch = false;
+
+        if(question5.contains("ALL")){
+            Log.d("DELETE EVENTS", "deleteSubjects: NOTHING");
+            dont_touch = true;
+        }
+
+        else if (question5.contains("ALG"))
+        {
+            for(String o: raw_input){
+                if(o.contains("ALG"))
+                    result.add(o);
+            }
+        }
+        else if(question5.contains("AO")){
+            for(String o: raw_input){
+                if(o.contains("AO"))
+                    result.add(o);
+            }
+        }
+        else if(question5.contains("EMP")){
+            for(String o: raw_input){
+                if(o.contains("EMP"))
+                    result.add(o);
+            }
+        }
+        else if(question5.contains("FMT")){
+            for(String o: raw_input){
+                if(o.contains("FMT"))
+                    result.add(o);
+            }
+        }
+        else if(question5.contains("CAL-I")){
+            for(String o: raw_input){
+                if(o.contains("CAL-I"))
+                    result.add(o);
+            }
+        }
+        if(!dont_touch) {
+            raw_input.clear();
+            for (String o : result) {
+                raw_input.add(o);
+            }
+        }
+    }
+
     private void toCalendarOption(){
         Intent intent = new Intent(this, AlgorithmOptions.class);
         startActivity(intent);
@@ -135,6 +184,9 @@ public class Algorithm extends AppCompatActivity {
 
     public static void setQuestion4(int question4) {
         Algorithm.question4 = question4;
+    }
+    public static void setQuestion5(ArrayList<String> question5) {
+        Algorithm.question5 = question5;
     }
 }
 

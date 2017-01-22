@@ -301,7 +301,7 @@ public class Questions extends AppCompatActivity {
             aux5 --;
         checkBox =(CheckBox) findViewById(R.id.checkBox5);
         if (checkBox.isChecked()){
-            question5.add("CAL1");
+            question5.add("CAL-I");
             Log.d("CAL1", "onRadioButtonClicked5: ");
         }
         else
@@ -341,6 +341,7 @@ public class Questions extends AppCompatActivity {
         a.setQuestion2(question2);
         a.setQuestion3(question3);
         a.setQuestion4(question4);
+        a.setQuestion5(question5);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("The algorithm is about to start...");
