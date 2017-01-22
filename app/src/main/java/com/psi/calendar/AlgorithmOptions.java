@@ -7,11 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+
 public class AlgorithmOptions extends AppCompatActivity {
 
     private ImageView firstOption;
     private ImageView secondOption;
     private ImageView thirdOption;
+
+
+
+    private static ArrayList<Sesion> time_table_1 = new ArrayList<Sesion>();
+    private static ArrayList<Sesion> time_table_2 = new ArrayList<Sesion>();
+    private static ArrayList<Sesion> time_table_3 = new ArrayList<Sesion>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +54,11 @@ public class AlgorithmOptions extends AppCompatActivity {
      */
     private void firstOption(){
         Intent intent = new Intent(this,CalendarOption.class);
+        Bundle info = new Bundle();
+
+        info.putSerializable("time_table_1", time_table_1);
+        intent.putExtras(info);
+        intent.putExtra("key","1");
         startActivity(intent);
     }
 
@@ -54,6 +67,11 @@ public class AlgorithmOptions extends AppCompatActivity {
      */
     private void secondOption(){
         Intent intent = new Intent(this,CalendarOption.class);
+        Bundle info = new Bundle();
+
+        info.putSerializable("time_table_2", time_table_2);
+        intent.putExtras(info);
+        intent.putExtra("key","2");
         startActivity(intent);
     }
 
@@ -62,6 +80,23 @@ public class AlgorithmOptions extends AppCompatActivity {
      */
     private void thirdOption(){
         Intent intent = new Intent(this,CalendarOption.class);
+        Bundle info = new Bundle();
+
+        info.putSerializable("time_table_3", time_table_3);
+        intent.putExtras(info);
+        intent.putExtra("key","3");
         startActivity(intent);
+    }
+
+    public static void setTime_table_1(ArrayList<Sesion> time_table_1) {
+        AlgorithmOptions.time_table_1 = time_table_1;
+    }
+
+    public static void setTime_table_2(ArrayList<Sesion> time_table_2) {
+        AlgorithmOptions.time_table_2 = time_table_2;
+    }
+
+    public static void setTime_table_3(ArrayList<Sesion> time_table_3) {
+        AlgorithmOptions.time_table_3 = time_table_3;
     }
 }

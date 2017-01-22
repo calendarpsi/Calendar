@@ -45,12 +45,38 @@ public class CalendarOption extends AppCompatActivity {
     static final int REQUEST_AUTHORIZATION = 1001;
     static final int REQUEST_GOOGLE_PLAY_SERVICES = 1002;
     private static GoogleAccountCredential credential = null;
+    private ArrayList<Sesion> monday = new ArrayList<>(),  tuesday = new ArrayList<>()
+            , wednesday = new ArrayList<>(), thursday = new ArrayList<>(), friday = new ArrayList<>();
+
+
+    private ArrayList<Sesion> timetable = new ArrayList<Sesion>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_option);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        //Code container
+        String key = getIntent().getExtras().getString("key");
+        switch (key){
+            case "1":
+                timetable = (ArrayList<Sesion>) getIntent().getSerializableExtra("time_table_1");
+                Log.d("Key: 1", "onCreate: "+timetable);
+                break;
+            case "2":
+                timetable = (ArrayList<Sesion>) getIntent().getSerializableExtra("time_table_2");
+                Log.d("Key: 2", "onCreate: "+timetable);
+                break;
+            case "3":
+                timetable = (ArrayList<Sesion>) getIntent().getSerializableExtra("time_table_3");
+                Log.d("Key: 3", "onCreate: "+timetable);
+                break;
+        }
+        //Inicialize
+        organizeCalendar();
+
+
         context = getApplicationContext();
         rv=(RecyclerView)findViewById(R.id.rv);
         fab=(FloatingActionButton)findViewById(R.id.fabOption1);
@@ -65,46 +91,90 @@ public class CalendarOption extends AppCompatActivity {
         initializeAdapter();
     }
 
+    private void organizeCalendar() {
+        for (int i = 0; i < timetable.size(); i++) {
+
+            switch (timetable.get(i).getDia()){
+                case 16:
+                    monday.add(timetable.get(i));
+                    break;
+
+                case 17:
+                    tuesday.add(timetable.get(i));
+                    break;
+
+                case 18:
+                    wednesday.add(timetable.get(i));
+                    break;
+
+                case 19:
+                    thursday.add(timetable.get(i));
+                    break;
+
+                case 20:
+                    friday.add(timetable.get(i));
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
+
     private void initializeData(){
+
         Clases = new ArrayList<>();
+
         Clases.add(new Clase("Monday", "","#FFFFFF",34));
-        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
-        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",24));
-        Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
-        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
-        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",24));
-        Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
+        for (int i = 0; i < monday.size(); i++) {
+            int horaInicio = monday.get(i).getHora();
+            int horaFin = monday.get(i).getHora()+monday.get(i).getDuracion();
+            Clases.add(new Clase(
+                    monday.get(i).getNombre(),
+                    horaInicio+" - " +horaFin,
+                    "#009688",24));
+        }
 
         Clases.add(new Clase("Tuesday", "","#FFFFFF",34));
-        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
-        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",24));
-        Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
-        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
-        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",24));
-        Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
+        for (int i = 0; i < tuesday.size(); i++) {
+            int horaInicio = tuesday.get(i).getHora();
+            int horaFin = tuesday.get(i).getHora() + tuesday.get(i).getDuracion();
+            Clases.add(new Clase(
+                    tuesday.get(i).getNombre(),
+                    horaInicio + " - " + horaFin,
+                    "#009688", 24));
+        }
 
         Clases.add(new Clase("Wednesday", "","#FFFFFF",34));
-        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
-        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",34));
-        Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
-        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
-        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",24));
-        Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
+        for (int i = 0; i < wednesday.size(); i++) {
+            int horaInicio = wednesday.get(i).getHora();
+            int horaFin = wednesday.get(i).getHora() + wednesday.get(i).getDuracion();
+            Clases.add(new Clase(
+                    wednesday.get(i).getNombre(),
+                    horaInicio + " - " + horaFin,
+                    "#009688", 24));
+        }
 
         Clases.add(new Clase("Thursday", "","#FFFFFF",34));
-        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
-        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",24));
-        Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
-        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
-        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",24));
-        Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
+        for (int i = 0; i < thursday.size(); i++) {
+            int horaInicio = thursday.get(i).getHora();
+            int horaFin = thursday.get(i).getHora() + thursday.get(i).getDuracion();
+            Clases.add(new Clase(
+                    thursday.get(i).getNombre(),
+                    horaInicio + " - " + horaFin,
+                    "#009688", 24));
+        }
 
-        Clases.add(new Clase("Wednesday", "","#FFFFFF",34));
-        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
-        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",34));
-        Clases.add(new Clase("AO", "10:00 - 12:00","#009688",24));
-        Clases.add(new Clase("Fisica", "12:00 - 13:00","#009688",24));
-        Clases.add(new Clase("CalI", "15:00 - 16:00","#009688",24));
+        Clases.add(new Clase("Friday", "","#FFFFFF",34));
+        for (int i = 0; i < friday.size(); i++) {
+            int horaInicio = friday.get(i).getHora();
+            int horaFin = friday.get(i).getHora() + friday.get(i).getDuracion();
+            Clases.add(new Clase(
+                    friday.get(i).getNombre(),
+                    horaInicio + " - " + horaFin,
+                    "#009688", 24));
+        }
+
 
 
     }
@@ -145,10 +215,15 @@ public class CalendarOption extends AppCompatActivity {
         GoogleAccountCredential credentials =credential;
         ArrayList<Event> events = new ArrayList<Event>();
 
-        Event event = new Event()
-                .setSummary("Google I/O 2020")
-                .setLocation("800 Howard St., San Francisco, CA 94103")
-                .setDescription("A chance to hear more about Google's developer products.");
+        for (int i = 0; i < timetable.size(); i++) {
+
+            Event event = new Event()
+                    .setSummary(timetable.get(i).getNombre()+" "+timetable.get(i).getTipoGrupo())
+                    .setLocation("Escola de Enxeñaría de Telecomunicación")
+                    .setDescription("A chance to learn technology in deep.");
+
+            DateTime startDateTime = new DateTime("2017-01-")
+        }
 
         DateTime startDateTime = new DateTime("2017-01-20T09:00:00+01:00");
         EventDateTime start = new EventDateTime()
