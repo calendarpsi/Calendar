@@ -95,23 +95,24 @@ public class CalendarOption extends AppCompatActivity {
         for (int i = 0; i < timetable.size(); i++) {
 
             switch (timetable.get(i).getDia()){
-                case 16:
+                //Antes ponía 16
+                case 1:
                     monday.add(timetable.get(i));
                     break;
 
-                case 17:
+                case 2:
                     tuesday.add(timetable.get(i));
                     break;
 
-                case 18:
+                case 3:
                     wednesday.add(timetable.get(i));
                     break;
 
-                case 19:
+                case 4:
                     thursday.add(timetable.get(i));
                     break;
 
-                case 20:
+                case 5:
                     friday.add(timetable.get(i));
                     break;
 
@@ -130,7 +131,7 @@ public class CalendarOption extends AppCompatActivity {
             int horaInicio = monday.get(i).getHora();
             int horaFin = monday.get(i).getHora()+monday.get(i).getDuracion();
             Clases.add(new Clase(
-                    monday.get(i).getNombre(),
+                    monday.get(i).getNombre()+"-"+monday.get(i).getAula(),
                     horaInicio+" - " +horaFin,
                     "#009688",24));
         }
@@ -140,7 +141,7 @@ public class CalendarOption extends AppCompatActivity {
             int horaInicio = tuesday.get(i).getHora();
             int horaFin = tuesday.get(i).getHora() + tuesday.get(i).getDuracion();
             Clases.add(new Clase(
-                    tuesday.get(i).getNombre(),
+                    tuesday.get(i).getNombre()+"-"+tuesday.get(i).getAula(),
                     horaInicio + " - " + horaFin,
                     "#009688", 24));
         }
@@ -150,7 +151,7 @@ public class CalendarOption extends AppCompatActivity {
             int horaInicio = wednesday.get(i).getHora();
             int horaFin = wednesday.get(i).getHora() + wednesday.get(i).getDuracion();
             Clases.add(new Clase(
-                    wednesday.get(i).getNombre(),
+                    wednesday.get(i).getNombre()+"-"+wednesday.get(i).getAula(),
                     horaInicio + " - " + horaFin,
                     "#009688", 24));
         }
@@ -160,7 +161,7 @@ public class CalendarOption extends AppCompatActivity {
             int horaInicio = thursday.get(i).getHora();
             int horaFin = thursday.get(i).getHora() + thursday.get(i).getDuracion();
             Clases.add(new Clase(
-                    thursday.get(i).getNombre(),
+                    thursday.get(i).getNombre()+"-"+thursday.get(i).getAula(),
                     horaInicio + " - " + horaFin,
                     "#009688", 24));
         }
@@ -170,7 +171,7 @@ public class CalendarOption extends AppCompatActivity {
             int horaInicio = friday.get(i).getHora();
             int horaFin = friday.get(i).getHora() + friday.get(i).getDuracion();
             Clases.add(new Clase(
-                    friday.get(i).getNombre(),
+                    friday.get(i).getNombre()+"-"+friday.get(i).getAula(),
                     horaInicio + " - " + horaFin,
                     "#009688", 24));
         }
@@ -217,11 +218,16 @@ public class CalendarOption extends AppCompatActivity {
         for (int i = 0; i < monday.size() ; i++) {
             Sesion aux = monday.get(i);
             Event event = new Event()
-                    .setSummary(aux.getNombre()+" "+aux.getTipoGrupo())
+                    .setSummary(aux.getNombre()+" "+aux.getAula())
                     .setLocation("Escola de Enxeñaría de Telecomunicación")
                     .setDescription("A chance to learn technology in deep.");
 
-            DateTime startDateTime = new DateTime("2017-01-16T" +aux.getHora()+":00:00+01:00");
+            DateTime startDateTime;
+            if(aux.getHora() <= 9)
+               startDateTime  = new DateTime("2017-01-16T0" +aux.getHora()+":00:00+01:00");
+            else
+                startDateTime  = new DateTime("2017-01-16T" +aux.getHora()+":00:00+01:00");
+
             EventDateTime start = new EventDateTime()
                     .setDateTime(startDateTime)
                     .setTimeZone("Europe/Madrid");
@@ -249,11 +255,15 @@ public class CalendarOption extends AppCompatActivity {
         for (int i = 0; i < tuesday.size() ; i++) {
             Sesion aux = tuesday.get(i);
             Event event = new Event()
-                    .setSummary(aux.getNombre()+" "+aux.getTipoGrupo())
+                    .setSummary(aux.getNombre()+" "+aux.getAula())
                     .setLocation("Escola de Enxeñaría de Telecomunicación")
                     .setDescription("A chance to learn technology in deep.");
 
-            DateTime startDateTime = new DateTime("2017-01-17T" +aux.getHora()+":00:00+01:00");
+            DateTime startDateTime;
+            if(aux.getHora() <= 9)
+                startDateTime  = new DateTime("2017-01-17T0" +aux.getHora()+":00:00+01:00");
+            else
+                startDateTime  = new DateTime("2017-01-17T" +aux.getHora()+":00:00+01:00");
 
             EventDateTime start = new EventDateTime()
                     .setDateTime(startDateTime)
@@ -282,11 +292,16 @@ public class CalendarOption extends AppCompatActivity {
         for (int i = 0; i <wednesday.size() ; i++) {
             Sesion aux = wednesday.get(i);
             Event event = new Event()
-                    .setSummary(aux.getNombre()+" "+aux.getTipoGrupo())
+                    .setSummary(aux.getNombre()+" "+aux.getAula())
                     .setLocation("Escola de Enxeñaría de Telecomunicación")
                     .setDescription("A chance to learn technology in deep.");
 
-            DateTime startDateTime = new DateTime("2017-01-18T" +aux.getHora()+":00:00+01:00");
+            DateTime startDateTime;
+            if(aux.getHora() <= 9)
+                startDateTime  = new DateTime("2017-01-18T0" +aux.getHora()+":00:00+01:00");
+            else
+                startDateTime  = new DateTime("2017-01-18T" +aux.getHora()+":00:00+01:00");
+
             EventDateTime start = new EventDateTime()
                     .setDateTime(startDateTime)
                     .setTimeZone("Europe/Madrid");
@@ -314,11 +329,16 @@ public class CalendarOption extends AppCompatActivity {
         for (int i = 0; i < thursday.size() ; i++) {
             Sesion aux = thursday.get(i);
             Event event = new Event()
-                    .setSummary(aux.getNombre()+" "+aux.getTipoGrupo())
+                    .setSummary(aux.getNombre()+" "+aux.getAula())
                     .setLocation("Escola de Enxeñaría de Telecomunicación")
                     .setDescription("A chance to learn technology in deep.");
 
-            DateTime startDateTime = new DateTime("2017-01-19T" +aux.getHora()+":00:00+01:00");
+            DateTime startDateTime;
+            if(aux.getHora() <= 9)
+                startDateTime  = new DateTime("2017-01-19T0" +aux.getHora()+":00:00+01:00");
+            else
+                startDateTime  = new DateTime("2017-01-19T" +aux.getHora()+":00:00+01:00");
+
             EventDateTime start = new EventDateTime()
                     .setDateTime(startDateTime)
                     .setTimeZone("Europe/Madrid");
@@ -346,11 +366,16 @@ public class CalendarOption extends AppCompatActivity {
         for (int i = 0; i < friday.size() ; i++) {
             Sesion aux = friday.get(i);
             Event event = new Event()
-                    .setSummary(aux.getNombre()+" "+aux.getTipoGrupo())
+                    .setSummary(aux.getNombre()+" "+aux.getAula())
                     .setLocation("Escola de Enxeñaría de Telecomunicación")
                     .setDescription("A chance to learn technology in deep.");
 
-            DateTime startDateTime = new DateTime("2017-01-20T" +aux.getHora()+":00:00+01:00");
+            DateTime startDateTime;
+            if(aux.getHora() <= 9)
+                startDateTime  = new DateTime("2017-01-20T0" +aux.getHora()+":00:00+01:00");
+            else
+                startDateTime  = new DateTime("2017-01-20T" +aux.getHora()+":00:00+01:00");
+
             EventDateTime start = new EventDateTime()
                     .setDateTime(startDateTime)
                     .setTimeZone("Europe/Madrid");
