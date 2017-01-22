@@ -8,86 +8,71 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="503dp"
-        android:background="#FFFF"
+        android:layout_height="match_parent"
         >
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:srcCompat="@drawable/icon"
-            android:id="@+id/imageView"
-            android:layout_marginTop="42dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="18dp" />
-
-        <TextView
-            android:text="@string/question_1stsemester"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView3"
-            android:layout_marginTop="27dp"
-            android:layout_below="@+id/imageView"
-            android:layout_alignStart="@+id/imageView" />
 
         <CheckBox
+            android:buttonTint="#FFF"
             android:text="CHECK ALL!"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBox6"
             android:layout_below="@+id/checkBox5"
             android:layout_alignStart="@+id/checkBox5"
-            android:onClick="onRadioButtonClicked5"/>
+            android:onClick="onRadioButtonClicked5"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp" />
 
         <CheckBox
-            android:text="Cálculo I"
+            android:buttonTint="#FFF"
+            android:text="CAL-I"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBox5"
             android:layout_below="@+id/checkBox4"
             android:layout_alignStart="@+id/checkBox4"
-            android:onClick="onRadioButtonClicked5"/>
+            android:onClick="onRadioButtonClicked5"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp" />
 
 
         <CheckBox
-            android:text="Fundamentos de mecánica y termodinámica"
+            android:buttonTint="#FFF"
+            android:text="FMT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBox4"
             android:layout_below="@+id/checkBox3"
             android:layout_alignStart="@+id/checkBox3"
-            android:onClick="onRadioButtonClicked5"/>
+            android:onClick="onRadioButtonClicked5"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp" />
 
 
         <CheckBox
-            android:text="Fundamentos de empresa"
+            android:buttonTint="#FFF"
+            android:text="FMT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBox3"
             android:layout_below="@+id/checkBox2"
             android:layout_alignStart="@+id/checkBox2"
-            android:onClick="onRadioButtonClicked5"/>
+            android:onClick="onRadioButtonClicked5"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp" />
 
 
         <CheckBox
-            android:text="Arquitectura de Ordenadores"
+            android:buttonTint="#FFF"
+            android:text="AO"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBox2"
             android:layout_below="@+id/checkBox1"
             android:layout_alignStart="@+id/checkBox1"
-            android:onClick="onRadioButtonClicked5"/>
-
-
-        <CheckBox
-            android:text="Álgebra I"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox1"
-            android:layout_marginTop="25dp"
-            android:layout_below="@+id/textView3"
-            android:layout_alignStart="@+id/textView3"
-            android:onClick="onRadioButtonClicked5"/>
+            android:onClick="onRadioButtonClicked5"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp" />
 
 
         <ProgressBar
@@ -106,13 +91,38 @@
 
         <ImageView
             android:layout_height="50dp"
-            app:srcCompat="@drawable/ic_next"
+            app:srcCompat="@drawable/ic_next_white"
             android:id="@+id/imageView2"
             android:onClick="onButtonClicked"
             android:layout_width="50dp"
-            android:layout_marginBottom="27dp"
+            android:layout_marginBottom="29dp"
             android:layout_above="@+id/progressBar3"
-            android:layout_alignEnd="@+id/checkBox3" />
+            android:layout_centerHorizontal="true" />
 
+        <CheckBox
+            android:buttonTint="#FFF"
+            android:text="ALG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox1"
+            android:layout_marginTop="37dp"
+            android:onClick="onRadioButtonClicked5"
+            android:textSize="18sp"
+            android:textColor="@color/cardview_light_background"
+            android:layout_below="@+id/textView3"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:text="@string/question_1stsemester"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            android:fontFamily="cursive"
+            android:textColor="@color/cardview_light_background"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="36dp" />
     </RelativeLayout>
 </LinearLayout>

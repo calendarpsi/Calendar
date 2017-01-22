@@ -32,6 +32,7 @@ import com.google.api.services.calendar.model.EventReminder;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class CalendarOption extends AppCompatActivity {
@@ -74,6 +75,7 @@ public class CalendarOption extends AppCompatActivity {
                 break;
         }
         //Inicialize
+        Collections.sort(timetable);
         organizeCalendar();
 
 

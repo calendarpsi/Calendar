@@ -683,7 +683,7 @@ public class Horario {
 
 }//fin class Horario
 
-class Sesion implements Serializable {
+class Sesion implements Serializable, Comparable<Sesion> {
 
     private int hora;
     private int duracion;
@@ -761,6 +761,17 @@ class Sesion implements Serializable {
                 ", nombre='" + nombre + '\'' +
                 ", tipoGrupo='" + tipoGrupo + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Sesion sesion) {
+        if (this.hora < sesion.hora) {
+            return -1;
+        }
+        if (this.hora > sesion.hora) {
+            return 1;
+        }
+        return 0;
     }
 }
 

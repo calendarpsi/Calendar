@@ -1,12 +1,11 @@
 package com.psi.calendar;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -21,6 +20,7 @@ public class Algorithm extends AppCompatActivity {
     private ArrayList<Sesion> time_table_2 = new ArrayList<>();
     private ArrayList<Sesion> time_table_3 = new ArrayList<>();
     private static Horario elHorario;
+    ProgressDialog mProgress;
 
 
 
@@ -30,15 +30,9 @@ public class Algorithm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_algorithm);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        Button nextActivity = (Button)findViewById(R.id.btnToCalendarOption);
-        nextActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toCalendarOption();
-            }
-        });
-
-
+        mProgress = new ProgressDialog(this);
+        mProgress.setMessage("The algorithm is working ...");
+        mProgress.show();
         //CODIGO MAIN:
         elHorario = new Horario();
         try {
@@ -102,6 +96,8 @@ public class Algorithm extends AppCompatActivity {
         AlgorithmOptions.setTime_table_1(time_table_1);
         //AlgorithmOptions.setTime_table_2(time_table_2);
         //AlgorithmOptions.setTime_table_3(time_table_3);
+        mProgress.hide();
+        toCalendarOption();
 
 
     }
@@ -109,6 +105,10 @@ public class Algorithm extends AppCompatActivity {
     private void toCalendarOption(){
         Intent intent = new Intent(this, AlgorithmOptions.class);
         startActivity(intent);
+        if (mProgress != null) {
+            if(mProgress.isShowing()) mProgress.dismiss();
+            mProgress = null;
+        }
         this.finish();
     }
 
