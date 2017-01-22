@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
     //Activity Open Google Calendar
     public void toGoogleCalendar(){
         Calendar cal = new GregorianCalendar();
-        //cal.setTime(new Date());
-        //cal.add(Calendar.MONTH, 2);
         long time = cal.getTime().getTime();
         Uri.Builder builder =
                 CalendarContract.CONTENT_URI.buildUpon();
