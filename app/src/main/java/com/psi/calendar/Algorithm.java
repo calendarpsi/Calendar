@@ -1,6 +1,7 @@
 package com.psi.calendar;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ public class Algorithm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_algorithm);
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Button nextActivity = (Button)findViewById(R.id.btnToCalendarOption);
         nextActivity.setOnClickListener(new View.OnClickListener() {
             @Override
