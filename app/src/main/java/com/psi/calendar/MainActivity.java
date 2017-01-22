@@ -1,16 +1,14 @@
 package com.psi.calendar;
 
-import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
     //Activity Open Google Calendar
     public void toGoogleCalendar(){
         Calendar cal = new GregorianCalendar();
-        cal.setTime(new Date());
-        cal.add(Calendar.MONTH, 2);
+        //cal.setTime(new Date());
+        //cal.add(Calendar.MONTH, 2);
         long time = cal.getTime().getTime();
         Uri.Builder builder =
                 CalendarContract.CONTENT_URI.buildUpon();
