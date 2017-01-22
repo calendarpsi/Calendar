@@ -152,35 +152,55 @@ public class Horario {
                 case "lu":
                     for (int j = h_inicio; j < h_fin - h_inicio; j++) {
                         mat_disponibilidad[j][0] -= 20;
+                        mat_disponibilidad[j][1] += 20;
+                        mat_disponibilidad[j][2] += 20;
+                        mat_disponibilidad[j][3] += 20;
+                        mat_disponibilidad[j][4] += 20;
                     }
                     break;
                 case "ma":
                     for (int j = h_inicio; j < h_fin - h_inicio; j++) {
                         mat_disponibilidad[j][1] -= 20;
+                        mat_disponibilidad[j][0] += 20;
+                        mat_disponibilidad[j][2] += 20;
+                        mat_disponibilidad[j][3] += 20;
+                        mat_disponibilidad[j][4] += 20;
                     }
                     break;
                 case "mi":
                     for (int j = h_inicio; j < h_fin - h_inicio; j++) {
                         mat_disponibilidad[j][2] -= 20;
+                        mat_disponibilidad[j][0] += 20;
+                        mat_disponibilidad[j][1] += 20;
+                        mat_disponibilidad[j][3] += 20;
+                        mat_disponibilidad[j][4] += 20;
                     }
                     break;
                 case "ju":
                     for (int j = h_inicio; j < h_fin - h_inicio; j++) {
                         mat_disponibilidad[j][3] -= 20;
+                        mat_disponibilidad[j][0] += 20;
+                        mat_disponibilidad[j][1] += 20;
+                        mat_disponibilidad[j][2] += 20;
+                        mat_disponibilidad[j][4] += 20;
                     }
                     break;
                 case "vi":
                     for (int j = h_inicio; j < h_fin - h_inicio; j++) {
                         mat_disponibilidad[j][4] -= 20;
+                        mat_disponibilidad[j][0] += 20;
+                        mat_disponibilidad[j][1] += 20;
+                        mat_disponibilidad[j][2] += 20;
+                        mat_disponibilidad[j][3] += 20;
                     }
                     break;
                 case "ev":
                     for (int j = h_inicio; j < h_fin - h_inicio; j++) {
-                        mat_disponibilidad[j][0] -= 20;
-                        mat_disponibilidad[j][1] -= 20;
-                        mat_disponibilidad[j][2] -= 20;
-                        mat_disponibilidad[j][3] -= 20;
-                        mat_disponibilidad[j][4] -= 20;
+                        mat_disponibilidad[j][0] += 20;
+                        mat_disponibilidad[j][1] += 20;
+                        mat_disponibilidad[j][2] += 20;
+                        mat_disponibilidad[j][3] += 20;
+                        mat_disponibilidad[j][4] += 20;
                     }
                     break;
                 default:

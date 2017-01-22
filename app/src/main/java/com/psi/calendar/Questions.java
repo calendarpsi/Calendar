@@ -337,6 +337,11 @@ public class Questions extends AppCompatActivity {
      * @param view
      */
     public void onButtonClicked(View view){
+        Algorithm a  = new Algorithm();
+        a.setQuestion2(question2);
+        a.setQuestion3(question3);
+        a.setQuestion4(question4);
+
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("The algorithm is about to start...");
         alertDialogBuilder

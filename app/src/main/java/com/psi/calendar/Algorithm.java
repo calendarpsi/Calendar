@@ -21,6 +21,12 @@ public class Algorithm extends AppCompatActivity {
     private ArrayList<Sesion> time_table_3 = new ArrayList<>();
     private static Horario elHorario;
     ProgressDialog mProgress;
+    private static int question2 = 0;
+
+
+
+    private static ArrayList<String> question3 = null;
+    private static int question4 = 0;
 
 
 
@@ -47,18 +53,16 @@ public class Algorithm extends AppCompatActivity {
         int mat_disponibilidad[][];
         int sum_horarioDeseado = 0, sum_horarioGenerado = 0, porcentaje_ocupado = 0;
         //Variables for the Algorithm execution
-        int generationCount = 0, vueltas=50, poblacionSize=10;//Set up parameters //TODO valorar que desde la aplicación se pueda ajustar
+        int generationCount = 0, vueltas=50, poblacionSize=50;//Set up parameters //TODO valorar que desde la aplicación se pueda ajustar
         //TODO Integración:usar constructor metiendo los parámetros que vengan de las elecciones del usuario: dias_laborable, h_inicio, h_fin, materias[],...
         //elHorario = new Horario();
 
         //TODO Parte delicada por la decisión de cómo calcularlo. Está en proceso
         //mat_disponibilidad = elHorario.crearMat_disp();//TODO: Cambiar nombre a crearMat_vacia. Esta linea y la siguiente pueden ser solo una y borrarmos la variable mat_dispopinibilidad
         mat_disponibilidad = elHorario.crearMat_vacia();
-        elHorario.pregunta2(1);
-        ArrayList<String> viernes = new ArrayList<>(1);
-        viernes.add("vi");
-        elHorario.pregunta3(viernes);
-        elHorario.pregunta4(13);
+        elHorario.pregunta2(question2);
+        elHorario.pregunta3(question3);
+        elHorario.pregunta4(question4);
         //System.out.println("Preguntas realizadas.");
         //System.out.println(elHorario.getCantGrupos());
         //System.out.println(elHorario.getCantGruposLowCPU());
@@ -121,6 +125,16 @@ public class Algorithm extends AppCompatActivity {
     public static Horario getElHorario() {
         return elHorario;
     }
+    public static void setQuestion2(int question2) {
+        Algorithm.question2 = question2;
+    }
 
+    public static void setQuestion3(ArrayList<String> question3) {
+        Algorithm.question3 = question3;
+    }
+
+    public static void setQuestion4(int question4) {
+        Algorithm.question4 = question4;
+    }
 }
 
