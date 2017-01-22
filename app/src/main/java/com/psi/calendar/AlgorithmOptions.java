@@ -1,6 +1,7 @@
 package com.psi.calendar;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ public class AlgorithmOptions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_algorithm_options);
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         firstOption = (ImageView)findViewById(R.id.firstOption);
         secondOption = (ImageView)findViewById(R.id.secondOption);
         thirdOption = (ImageView)findViewById(R.id.thirdOption);
