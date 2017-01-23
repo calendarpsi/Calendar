@@ -38,7 +38,6 @@ public class Algorithm extends AppCompatActivity {
         mProgress.setMessage("The algorithm is working ...");
         mProgress.show();
 
-
         //ALGORITHM CODE ------------------------------------------------------------------------------->
         elHorario = new Horario();
         try {
@@ -47,8 +46,7 @@ public class Algorithm extends AppCompatActivity {
             e.printStackTrace();
             Log.e("INput read ERROR! Raw", "onCreate: ");
         }
-        //elHorario.crearAsignaturasInteres() pasar array de int
-        Log.e("Poner aqui DAVID", "onCreate: " );
+        elHorario.crearAsignaturasInteres(question5);
         //System.out.println(elHorario.getCantGrupos());
 
         //Variables for calculating fitness/ variables for measuring the quality of each timetable generated

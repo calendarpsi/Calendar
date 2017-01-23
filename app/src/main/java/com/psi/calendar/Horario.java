@@ -1,4 +1,5 @@
-package com.psi.calendar;/*
+package com.psi.calendar;
+/*
  * Como es un algoritmo evolutivo los genes van a ser las elecciones de grupos y dem��s, as�� que su n��mero variar�� y se obtendr��
  * en funci��n de cu��ntas opciones de horarios haya.
  * Cada HORARIO contiene MATERIAS:
@@ -21,6 +22,7 @@ import java.util.Vector;
 public class Horario {
     private Horario horario;
     private TreeMap<Integer, Materia> Materias = new TreeMap<>();
+    private TreeMap<Integer, Integer> MateriasDeInteres = new TreeMap<>();
     private int h_inicio = 0, h_fin = 23;
     private int[] dias_laborables = {1, 1, 1, 1, 1};    //datoAPI
     private int[][] mat_disponibilidad = new int[h_fin - h_inicio][5];
@@ -36,6 +38,12 @@ public class Horario {
         }
         this.Materias = Materias;
         this.cantGrupos = getCantGrupos();
+    }
+
+    public void crearAsignaturasInteres(int[] asigInteres){
+        for (int i = 0; i < asigInteres.length; i++) {
+            MateriasDeInteres.put(i,asigInteres[i]);
+        }
     }
 
     public int[][] crearMat_disp() {
@@ -152,55 +160,35 @@ public class Horario {
                 case "lu":
                     for (int j = h_inicio; j < h_fin - h_inicio; j++) {
                         mat_disponibilidad[j][0] -= 20;
-                        mat_disponibilidad[j][1] += 20;
-                        mat_disponibilidad[j][2] += 20;
-                        mat_disponibilidad[j][3] += 20;
-                        mat_disponibilidad[j][4] += 20;
                     }
                     break;
                 case "ma":
                     for (int j = h_inicio; j < h_fin - h_inicio; j++) {
                         mat_disponibilidad[j][1] -= 20;
-                        mat_disponibilidad[j][0] += 20;
-                        mat_disponibilidad[j][2] += 20;
-                        mat_disponibilidad[j][3] += 20;
-                        mat_disponibilidad[j][4] += 20;
                     }
                     break;
                 case "mi":
                     for (int j = h_inicio; j < h_fin - h_inicio; j++) {
                         mat_disponibilidad[j][2] -= 20;
-                        mat_disponibilidad[j][0] += 20;
-                        mat_disponibilidad[j][1] += 20;
-                        mat_disponibilidad[j][3] += 20;
-                        mat_disponibilidad[j][4] += 20;
                     }
                     break;
                 case "ju":
                     for (int j = h_inicio; j < h_fin - h_inicio; j++) {
                         mat_disponibilidad[j][3] -= 20;
-                        mat_disponibilidad[j][0] += 20;
-                        mat_disponibilidad[j][1] += 20;
-                        mat_disponibilidad[j][2] += 20;
-                        mat_disponibilidad[j][4] += 20;
                     }
                     break;
                 case "vi":
                     for (int j = h_inicio; j < h_fin - h_inicio; j++) {
                         mat_disponibilidad[j][4] -= 20;
-                        mat_disponibilidad[j][0] += 20;
-                        mat_disponibilidad[j][1] += 20;
-                        mat_disponibilidad[j][2] += 20;
-                        mat_disponibilidad[j][3] += 20;
                     }
                     break;
                 case "ev":
                     for (int j = h_inicio; j < h_fin - h_inicio; j++) {
-                        mat_disponibilidad[j][0] += 20;
-                        mat_disponibilidad[j][1] += 20;
-                        mat_disponibilidad[j][2] += 20;
-                        mat_disponibilidad[j][3] += 20;
-                        mat_disponibilidad[j][4] += 20;
+                        mat_disponibilidad[j][0] -= 20;
+                        mat_disponibilidad[j][1] -= 20;
+                        mat_disponibilidad[j][2] -= 20;
+                        mat_disponibilidad[j][3] -= 20;
+                        mat_disponibilidad[j][4] -= 20;
                     }
                     break;
                 default:
@@ -240,11 +228,21 @@ public class Horario {
         Materia FMT = new Materia(2, "Fundamentos da Mecánica e Termodinámica", "FMT");
         Materia ALG = new Materia(3, "Algebra", "ALG");
         Materia EMP = new Materia(4, "Fundamentos de Empresas", "EMP");
+        Materia CD = new Materia(5, "Comunicacion de datos", "CD");
+        Materia FE = new Materia(6, "Fundamentos de Electronica", "FE");
+        Materia PII = new Materia(7, "Programacion II", "PII");
+        Materia TEM = new Materia(8, "Transmision Electromagnetica", "TEM");
+        Materia PDS = new Materia(9, "Procesado Digital de Senhales", "PDS");
         this.Materias.put(1, AO);
         this.Materias.put(2, CAL1);
         this.Materias.put(3, FMT);
         this.Materias.put(4, ALG);
         this.Materias.put(5, EMP);
+        this.Materias.put(6, CD);
+        this.Materias.put(7, FE);
+        this.Materias.put(8, PII);
+        this.Materias.put(9, TEM);
+        this.Materias.put(10, PDS);
 
 
     }
@@ -356,6 +354,101 @@ public class Horario {
                 } else {
                     GrupoClase grupo = creaGrupoB("Algebra", datos);
                     Materia mat = Materias.get(5);
+                    mat.addGrupoB(Integer.parseInt(grupo.getId().substring(1)), grupo);
+                }
+                break;
+            case "CD":
+                if (asignatura[1].contains("TEORIA")) {
+                    GrupoClase grupo = creaGrupoT("Comunicacion de datos", datos);
+                    Materia mat = Materias.get(6);
+                    if (grupo != null) {
+                        if (grupo.getGrupo().equals("A")) {
+                            mat.addGrupoT(1, grupo);
+                        } else if (grupo.getGrupo().equals("B")) {
+                            mat.addGrupoT(2, grupo);
+                        } else if (grupo.getGrupo().equals("C")) {
+                            mat.addGrupoT(3, grupo);
+                        }
+                    }
+                } else {
+                    GrupoClase grupo = creaGrupoB("Comunicacion de datos", datos);
+                    Materia mat = Materias.get(6);
+                    mat.addGrupoB(Integer.parseInt(grupo.getId().substring(1)), grupo);
+                }
+                break;
+            case "FE":
+                if (asignatura[1].contains("TEORIA")) {
+                    GrupoClase grupo = creaGrupoT("Fundamentos de electronica", datos);
+                    Materia mat = Materias.get(7);
+                    if (grupo != null) {
+                        if (grupo.getGrupo().equals("A")) {
+                            mat.addGrupoT(1, grupo);
+                        } else if (grupo.getGrupo().equals("B")) {
+                            mat.addGrupoT(2, grupo);
+                        } else if (grupo.getGrupo().equals("C")) {
+                            mat.addGrupoT(3, grupo);
+                        }
+                    }
+                } else {
+                    GrupoClase grupo = creaGrupoB("Fundamentos de electronica", datos);
+                    Materia mat = Materias.get(7);
+                    mat.addGrupoB(Integer.parseInt(grupo.getId().substring(1)), grupo);
+                }
+                break;
+            case "PII":
+                if (asignatura[1].contains("TEORIA")) {
+                    GrupoClase grupo = creaGrupoT("Programacion II", datos);
+                    Materia mat = Materias.get(8);
+                    if (grupo != null) {
+                        if (grupo.getGrupo().equals("A")) {
+                            mat.addGrupoT(1, grupo);
+                        } else if (grupo.getGrupo().equals("B")) {
+                            mat.addGrupoT(2, grupo);
+                        } else if (grupo.getGrupo().equals("C")) {
+                            mat.addGrupoT(3, grupo);
+                        }
+                    }
+                } else {
+                    GrupoClase grupo = creaGrupoB("Programacion II", datos);
+                    Materia mat = Materias.get(8);
+                    mat.addGrupoB(Integer.parseInt(grupo.getId().substring(1)), grupo);
+                }
+                break;
+            case "TEM":
+                if (asignatura[1].contains("TEORIA")) {
+                    GrupoClase grupo = creaGrupoT("Transmision Electromagnetica", datos);
+                    Materia mat = Materias.get(9);
+                    if (grupo != null) {
+                        if (grupo.getGrupo().equals("A")) {
+                            mat.addGrupoT(1, grupo);
+                        } else if (grupo.getGrupo().equals("B")) {
+                            mat.addGrupoT(2, grupo);
+                        } else if (grupo.getGrupo().equals("C")) {
+                            mat.addGrupoT(3, grupo);
+                        }
+                    }
+                } else {
+                    GrupoClase grupo = creaGrupoB("Transmision Electromagnetica", datos);
+                    Materia mat = Materias.get(9);
+                    mat.addGrupoB(Integer.parseInt(grupo.getId().substring(1)), grupo);
+                }
+                break;
+            case "PDS":
+                if (asignatura[1].contains("TEORIA")) {
+                    GrupoClase grupo = creaGrupoT("Procesado Digital de Senhales", datos);
+                    Materia mat = Materias.get(10);
+                    if (grupo != null) {
+                        if (grupo.getGrupo().equals("A")) {
+                            mat.addGrupoT(1, grupo);
+                        } else if (grupo.getGrupo().equals("B")) {
+                            mat.addGrupoT(2, grupo);
+                        } else if (grupo.getGrupo().equals("C")) {
+                            mat.addGrupoT(3, grupo);
+                        }
+                    }
+                } else {
+                    GrupoClase grupo = creaGrupoB("Procesado Digital de Senhales", datos);
+                    Materia mat = Materias.get(10);
                     mat.addGrupoB(Integer.parseInt(grupo.getId().substring(1)), grupo);
                 }
                 break;
@@ -485,6 +578,101 @@ public class Horario {
                     return grupoNew;
                 }
                 break;
+            case "Comunicacion de datos":
+                mat = Materias.get(6);
+                TreeMap<Integer, GrupoClase> mapCD = mat.getGruposT();
+                check = false;
+                for (Map.Entry<Integer, GrupoClase> entry : mapCD.entrySet()) {
+                    GrupoClase grupoCheck = entry.getValue();
+                    if (grupoCheck.getGrupo().equals(grupo)) {
+                        grupoCheck.addGrupo(Integer.parseInt(camposFecha[1].substring(0, 2)), duracion, dayOfWeek);
+                        check = true;
+                        mapALG = null;
+                        return null;
+                    }
+                }
+                if (!false) {
+                    GrupoClase grupoNew = new GrupoClase("Teoria " + asignatura, "T", grupo);
+                    grupoNew.addGrupo(Integer.parseInt(camposFecha[1].substring(0, 2)), duracion, dayOfWeek);
+                    return grupoNew;
+                }
+                break;
+            case "Fundamentos de electronica":
+                mat = Materias.get(7);
+                TreeMap<Integer, GrupoClase> mapFE = mat.getGruposT();
+                check = false;
+                for (Map.Entry<Integer, GrupoClase> entry : mapFE.entrySet()) {
+                    GrupoClase grupoCheck = entry.getValue();
+                    if (grupoCheck.getGrupo().equals(grupo)) {
+                        grupoCheck.addGrupo(Integer.parseInt(camposFecha[1].substring(0, 2)), duracion, dayOfWeek);
+                        check = true;
+                        mapALG = null;
+                        return null;
+                    }
+                }
+                if (!false) {
+                    GrupoClase grupoNew = new GrupoClase("Teoria " + asignatura, "T", grupo);
+                    grupoNew.addGrupo(Integer.parseInt(camposFecha[1].substring(0, 2)), duracion, dayOfWeek);
+                    return grupoNew;
+                }
+                break;
+            case "Programacion II":
+                mat = Materias.get(8);
+                TreeMap<Integer, GrupoClase> mapPII = mat.getGruposT();
+                check = false;
+                for (Map.Entry<Integer, GrupoClase> entry : mapPII.entrySet()) {
+                    GrupoClase grupoCheck = entry.getValue();
+                    if (grupoCheck.getGrupo().equals(grupo)) {
+                        grupoCheck.addGrupo(Integer.parseInt(camposFecha[1].substring(0, 2)), duracion, dayOfWeek);
+                        check = true;
+                        mapALG = null;
+                        return null;
+                    }
+                }
+                if (!false) {
+                    GrupoClase grupoNew = new GrupoClase("Teoria " + asignatura, "T", grupo);
+                    grupoNew.addGrupo(Integer.parseInt(camposFecha[1].substring(0, 2)), duracion, dayOfWeek);
+                    return grupoNew;
+                }
+                break;
+            case "Transmision Electromagnetica":
+                mat = Materias.get(9);
+                TreeMap<Integer, GrupoClase> mapTEM = mat.getGruposT();
+                check = false;
+                for (Map.Entry<Integer, GrupoClase> entry : mapTEM.entrySet()) {
+                    GrupoClase grupoCheck = entry.getValue();
+                    if (grupoCheck.getGrupo().equals(grupo)) {
+                        grupoCheck.addGrupo(Integer.parseInt(camposFecha[1].substring(0, 2)), duracion, dayOfWeek);
+                        check = true;
+                        mapALG = null;
+                        return null;
+                    }
+                }
+                if (!false) {
+                    GrupoClase grupoNew = new GrupoClase("Teoria " + asignatura, "T", grupo);
+                    grupoNew.addGrupo(Integer.parseInt(camposFecha[1].substring(0, 2)), duracion, dayOfWeek);
+                    return grupoNew;
+                }
+                break;
+            case "Procesado Digital de Senhales":
+                mat = Materias.get(10);
+                TreeMap<Integer, GrupoClase> mapPDS = mat.getGruposT();
+                check = false;
+                for (Map.Entry<Integer, GrupoClase> entry : mapPDS.entrySet()) {
+                    GrupoClase grupoCheck = entry.getValue();
+                    if (grupoCheck.getGrupo().equals(grupo)) {
+                        grupoCheck.addGrupo(Integer.parseInt(camposFecha[1].substring(0, 2)), duracion, dayOfWeek);
+                        check = true;
+                        mapALG = null;
+                        return null;
+                    }
+                }
+                if (!false) {
+                    GrupoClase grupoNew = new GrupoClase("Teoria " + asignatura, "T", grupo);
+                    grupoNew.addGrupo(Integer.parseInt(camposFecha[1].substring(0, 2)), duracion, dayOfWeek);
+                    return grupoNew;
+                }
+                break;
         }
         return null;
     }
@@ -562,8 +750,8 @@ public class Horario {
         int cantGruposSize = getCantGrupos();
         int[] genRule = new int[cantGruposSize];
         int i = 0;
-        for (Map.Entry<Integer, Materia> entry : Materias.entrySet()) {
-            Materia mat = entry.getValue();
+        for (Map.Entry<Integer, Integer> entry : MateriasDeInteres.entrySet()) {
+            Materia mat = Materias.get(entry.getValue());
             int cantGrupos = mat.cantGrupos();
             int[] maximos = mat.maximos();
             for (int j = 0; j < cantGrupos; j++) {
@@ -577,8 +765,8 @@ public class Horario {
 
     public int getCantGrupos() {
         int cantGrupos = 0;
-        for (Map.Entry<Integer, Materia> entry : Materias.entrySet()) {
-            Materia mat = entry.getValue();
+        for (Map.Entry<Integer, Integer> entry : MateriasDeInteres.entrySet()) {
+            Materia mat = Materias.get(entry.getValue());
             cantGrupos = cantGrupos + mat.cantGrupos();
         }
         this.cantGrupos = cantGrupos;
@@ -592,7 +780,7 @@ public class Horario {
             if (gen[i] != 0) todoCeros = false;
         }
         if (!todoCeros) {
-            GrupoClase grupoElegido = getGrupoDado(gen); //si empezamos a contar en cero hay que restar 1 a grupo para obtener el grupo adecuado
+            GrupoClase grupoElegido = getGrupoDado(gen);
             Vector<Integer> HoraInicio = new Vector<Integer>(grupoElegido.getHoraInicio());
             Vector<Integer> Duracion = new Vector<Integer>(grupoElegido.getDuracion());
             Vector<Integer> Dia = new Vector<Integer>(grupoElegido.getDia());
@@ -624,8 +812,8 @@ public class Horario {
         }
         grupo = gen[count]; //numero del grupo en cuestión
         materiasloop:
-        for (Map.Entry<Integer, Materia> entry : Materias.entrySet()) {
-            Materia mat = entry.getValue();
+        for (Map.Entry<Integer, Integer> entry : MateriasDeInteres.entrySet()) {
+            Materia mat = Materias.get(entry.getValue());
             int cantGrupos = mat.cantGrupos();
             if ((control + cantGrupos) > count) {
                 if (!done) {
@@ -670,17 +858,6 @@ public class Horario {
                 sesion.setHora(HoraInicio.get(j));
                 sesion.setTipoGrupo(grupoClase.getTipo());
                 sesion.setDia(Dia.get(j));
-                if(i%2==0){
-                    if(gen[i]==1){
-                        sesion.setAula("A");
-                    }else if(gen[i]==2){
-                        sesion.setAula("B");
-                    }else if(gen[i]==3){
-                        sesion.setAula("C");
-                    }
-                }else{
-                    sesion.setAula("B"+i);
-                }
                 export.add(i, sesion);
             }
         }
@@ -794,4 +971,5 @@ class Sesion implements Serializable, Comparable<Sesion> {
         return 0;
     }
 }
+
 
