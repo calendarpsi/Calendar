@@ -1,5 +1,7 @@
 package com.psi.calendar;
 
+import android.util.Log;
+
 public class PoblacionHorarios {
 	IndividuoHorario[] individuos;
 
@@ -23,11 +25,13 @@ public class PoblacionHorarios {
 		if (iniciar) {
 			// Loop to create individuals
 			for (int i = 0; i < tamano(); i++) {//tamano: the number os indivuduals that make up a population.
-				System.out.println("Se va a generar el individuo "+i);
+				Log.d("PoblacionHorarios", "Se va a generar el individuo "+i);
+				//System.out.println("Se va a generar el individuo "+i);
 				IndividuoHorario nuevoIndividuo = new IndividuoHorario();
 				nuevoIndividuo.generateIndividual();//generated randomly but then we have to make sure that the timetable doesn't overlap
 				saveIndividual(i, nuevoIndividuo); //"individuo" saved in for the new population
-				System.out.println("Se ha generado el individuo: "+i);
+				Log.d("PoblacionHorarios", "Se ha generado el individuo: "+i);
+				//System.out.println("Se ha generado el individuo: "+i);
 			}
 		}
 	}

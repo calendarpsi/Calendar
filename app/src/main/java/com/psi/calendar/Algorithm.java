@@ -38,7 +38,11 @@ public class Algorithm extends AppCompatActivity {
         mProgress.setMessage("The algorithm is working ...");
         mProgress.show();
 
-        //deleteSubjects(question5);
+        deleteSubjects(question5);
+        for (int i = 0; i < raw_input.size(); i++) {
+            Log.e("INPUT ALGORITHM", "onCreate: "+raw_input.get(i));
+
+        }
         //ALGORITHM CODE ------------------------------------------------------------------------------->
         elHorario = new Horario();
         try {
@@ -116,32 +120,32 @@ public class Algorithm extends AppCompatActivity {
             dont_touch = true;
         }
 
-        else if (question5.contains("ALG"))
+        if (question5.contains("ALG"))
         {
             for(String o: raw_input){
                 if(o.contains("ALG"))
                     result.add(o);
             }
         }
-        else if(question5.contains("AO")){
+        if(question5.contains("AO")){
             for(String o: raw_input){
                 if(o.contains("AO"))
                     result.add(o);
             }
         }
-        else if(question5.contains("EMP")){
+        if(question5.contains("EMP")){
             for(String o: raw_input){
                 if(o.contains("EMP"))
                     result.add(o);
             }
         }
-        else if(question5.contains("FMT")){
+        if(question5.contains("FMT")){
             for(String o: raw_input){
                 if(o.contains("FMT"))
                     result.add(o);
             }
         }
-        else if(question5.contains("CAL-I")){
+        if(question5.contains("CAL-I")){
             for(String o: raw_input){
                 if(o.contains("CAL-I"))
                     result.add(o);
