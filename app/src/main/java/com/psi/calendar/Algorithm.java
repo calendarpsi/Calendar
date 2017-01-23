@@ -24,7 +24,7 @@ public class Algorithm extends AppCompatActivity {
     private static int question2 = 0;
     private static ArrayList<String> question3 = null;
     private static int question4 = 0;
-    private static ArrayList<String> question5 = null;
+    private static int [] question5;
 
 
 
@@ -38,19 +38,17 @@ public class Algorithm extends AppCompatActivity {
         mProgress.setMessage("The algorithm is working ...");
         mProgress.show();
 
-        deleteSubjects(question5);
-        for (int i = 0; i < raw_input.size(); i++) {
-            Log.e("INPUT ALGORITHM", "onCreate: "+raw_input.get(i));
 
-        }
         //ALGORITHM CODE ------------------------------------------------------------------------------->
         elHorario = new Horario();
         try {
             elHorario.main(raw_input);
         } catch (ParseException e) {
             e.printStackTrace();
-            Log.e("INput read! Raw", "onCreate: ");
+            Log.e("INput read ERROR! Raw", "onCreate: ");
         }
+        //elHorario.crearAsignaturasInteres() pasar array de int
+        Log.e("Poner aqui DAVID", "onCreate: " );
         //System.out.println(elHorario.getCantGrupos());
 
         //Variables for calculating fitness/ variables for measuring the quality of each timetable generated
@@ -189,7 +187,7 @@ public class Algorithm extends AppCompatActivity {
     public static void setQuestion4(int question4) {
         Algorithm.question4 = question4;
     }
-    public static void setQuestion5(ArrayList<String> question5) {
+    public static void setQuestion5(int []question5) {
         Algorithm.question5 = question5;
     }
 }

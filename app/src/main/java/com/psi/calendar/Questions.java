@@ -17,8 +17,10 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 
-public class Questions extends AppCompatActivity {
+public class Questions extends AppCompatActivity implements Comparator {
     private ViewPager view1;
     private LinearLayout pagina1;
     private LinearLayout pagina2;
@@ -27,7 +29,10 @@ public class Questions extends AppCompatActivity {
     private LinearLayout pagina5;
     private int countPage = 0;
     private int question1, question2, question4;
-    private ArrayList<String> question3 = new ArrayList<String>(), question5 = new ArrayList<String>();
+    private ArrayList<String> question3 = new ArrayList<String>();
+    private int []question5 = null;
+    private ArrayList<Integer> question5_aux = new ArrayList();
+
 
     //Variables from the third & fifth question
     private int aux = 0, aux5 = 0;
@@ -40,6 +45,16 @@ public class Questions extends AppCompatActivity {
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         view1 = (ViewPager) findViewById(R.id.view);
         view1.setAdapter(new PageAdapter());
+    }
+
+    @Override
+    public int compare(Object o, Object t1) {
+        if((int)o < (int)t1)
+            return 1;
+        else if ((int)o > (int)t1)
+            return -1;
+        else
+            return 0;
     }
 
     public class PageAdapter extends PagerAdapter {
@@ -268,68 +283,133 @@ public class Questions extends AppCompatActivity {
     //
     //***********************************************************************************
     public void onRadioButtonClicked5(View view) {
-        question5.clear();
+        question5_aux.clear();
         aux5 = 0;
+
+        //ALG
 
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox1);
         if (checkBox.isChecked()) {
-            question5.add("ALG");
+            question5_aux.add(3);
             Log.d("ALG", "onRadioButtonClicked5: ");
         }
         else
             aux5 --;
+
+        //AO
+
         checkBox =(CheckBox) findViewById(R.id.checkBox2);
         if (checkBox.isChecked()){
-            question5.add("AO");
+            question5_aux.add(0);
             Log.d("AO", "onRadioButtonClicked5: ");
         }
         else
             aux5 --;
+
+        //EMP
+
         checkBox =(CheckBox) findViewById(R.id.checkBox3);
         if (checkBox.isChecked()){
-            question5.add("EMP");
+            question5_aux.add(4);
             Log.d("EMP", "onRadioButtonClicked5: ");
         }
         else
             aux5 --;
+
+        //FMT
+
         checkBox =(CheckBox) findViewById(R.id.checkBox4);
         if (checkBox.isChecked()){
-            question5.add("FMT");
+            question5_aux.add(2);
             Log.d("FMT", "onRadioButtonClicked5: ");
         }
         else
             aux5 --;
+
+        //CAL1
+
         checkBox =(CheckBox) findViewById(R.id.checkBox5);
         if (checkBox.isChecked()){
-            question5.add("CAL-I");
+            question5_aux.add(1);
             Log.d("CAL1", "onRadioButtonClicked5: ");
         }
         else
             aux5 --;
+
+        //ALL
+        /*
         checkBox =(CheckBox) findViewById(R.id.checkBox6);
-        if (checkBox.isChecked()){
+        if (checkBox.isChecked()) {
             check_all = true;
             question5.add("ALL");
             Log.d("CHECK ALL!", "onRadioButtonClicked5: ");
-
         }
         else
             check_all = false;
+        */
+
+        //CD
+        /*
+        checkBox =(CheckBox) findViewById(R.id.checkBox7);
+        if (checkBox.isChecked()){
+            question5_aux.add(5);
+            Log.d("CD", "onRadioButtonClicked5: ");
+        }
+        else
+            aux5 --;
+
+        //PII
+
+        checkBox =(CheckBox) findViewById(R.id.checkBox8);
+        if (checkBox.isChecked()){
+            question5_aux.add(7);
+            Log.d("PII", "onRadioButtonClicked5: ");
+        }
+        else
+            aux5 --;
+
+        //PDS
+
+        checkBox =(CheckBox) findViewById(R.id.checkBox9);
+        if (checkBox.isChecked()){
+            question5_aux.add(9);
+            Log.d("PDS", "onRadioButtonClicked5: ");
+        }
+        else
+            aux5 --;
+
+        //TEM
+
+        checkBox =(CheckBox) findViewById(R.id.checkBox10);
+        if (checkBox.isChecked()){
+            question5_aux.add(8);
+            Log.d("TEM", "onRadioButtonClicked5: ");
+        }
+        else
+            aux5 --;
+
+        //FE
+
+        checkBox =(CheckBox) findViewById(R.id.checkBox11);
+        if (checkBox.isChecked()){
+            question5_aux.add(6);
+            Log.d("FE", "onRadioButtonClicked5: ");
+        }
+        else
+            aux5 --;
+
 
         //Forbidds checking one of the subjects and "Check all" at the same time.
-        if (check_all == true && (aux5 > -5)) {
+        if (aux5 > -4) {
             ((CheckBox) view).toggle();
             Toast.makeText(this, "You can select several subjects, or ALL instead. "
                     , Toast.LENGTH_LONG).show();
-
-            if(view.toString().contains("id/checkBox6"))
-                question5.remove(question5.indexOf("ALL"));
-            else
-                question5.remove(0);
+            question5_aux.remove(0);
 
         }
+        */
 
-        Log.d("Array", "onRadioButtonClicked5: "+question5);
+        Log.d("Array", "onRadioButtonClicked5: "+question5_aux);
     }
 
     /**
@@ -341,7 +421,16 @@ public class Questions extends AppCompatActivity {
         a.setQuestion2(question2);
         a.setQuestion3(question3);
         a.setQuestion4(question4);
+
+        //This piece of code changes between an Array of integers to an Integer array
+        //It would be better to use the Wrapper class Integer, but we need int information.
+        question5 = new int [question5_aux.size()];
+        for (int i = 0; i < question5_aux.size() ; i++) {
+            question5[i] = question5_aux.get(i);
+        }
+        Arrays.sort(question5);
         a.setQuestion5(question5);
+
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("The algorithm is about to start...");
