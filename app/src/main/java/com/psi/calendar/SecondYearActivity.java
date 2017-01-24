@@ -35,10 +35,10 @@ public class SecondYearActivity extends AppCompatActivity implements Comparator 
         question2 = Integer.parseInt(getIntent().getExtras().getString("question2"));
         question3 = (ArrayList<String>) getIntent().getSerializableExtra("question3");
         question4 = Integer.parseInt(getIntent().getExtras().getString("question4"));
-        Log.d("question1",String.valueOf(question1));
-        Log.d("question2",String.valueOf(question2));
-        Log.d("question3",String.valueOf(question3));
-        Log.d("question4",String.valueOf(question4));
+        Log.d("question1","Second_year_Activity "+String.valueOf(question1));
+        Log.d("question2","Second_year_Activity "+String.valueOf(question2));
+        Log.d("question3","Second_year_Activity "+String.valueOf(question3));
+        Log.d("question4","Second_year_Activity "+String.valueOf(question4));
         imageView = (ImageView)findViewById(R.id.firstYear_toAlgorithm);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,11 +65,12 @@ public class SecondYearActivity extends AppCompatActivity implements Comparator 
     public void onRadioButtonClicked5(View view) {
         secondYear_aux.clear();
         aux5 = 0;
+
         //CD
         CheckBox  checkBox =(CheckBox) findViewById(R.id.checkBox7);
         if (checkBox.isChecked()){
             secondYear_aux.add(6);
-            Log.d("CD", "onRadioButtonClicked5: ");
+            Log.d("CD", "onRadioButtonClicked5_secondYear: ");
         }
         else
             aux5 --;
@@ -79,7 +80,7 @@ public class SecondYearActivity extends AppCompatActivity implements Comparator 
         checkBox =(CheckBox) findViewById(R.id.checkBox8);
         if (checkBox.isChecked()){
             secondYear_aux.add(8);
-            Log.d("PII", "onRadioButtonClicked5: ");
+            Log.d("PII", "onRadioButtonClicked5_secondYear: ");
         }
         else
             aux5 --;
@@ -89,7 +90,7 @@ public class SecondYearActivity extends AppCompatActivity implements Comparator 
         checkBox =(CheckBox) findViewById(R.id.checkBox9);
         if (checkBox.isChecked()){
             secondYear_aux.add(10);
-            Log.d("PDS", "onRadioButtonClicked5: ");
+            Log.d("PDS", "onRadioButtonClicked5_secondYear: ");
         }
         else
             aux5 --;
@@ -99,7 +100,7 @@ public class SecondYearActivity extends AppCompatActivity implements Comparator 
         checkBox =(CheckBox) findViewById(R.id.checkBox10);
         if (checkBox.isChecked()){
             secondYear_aux.add(9);
-            Log.d("TEM", "onRadioButtonClicked5: ");
+            Log.d("TEM", "onRadioButtonClicked5_secondYear: ");
         }
         else
             aux5 --;
@@ -108,13 +109,13 @@ public class SecondYearActivity extends AppCompatActivity implements Comparator 
 
         checkBox =(CheckBox) findViewById(R.id.checkBox11);
         if (checkBox.isChecked()){
-            secondYear_aux.add(6);
-            Log.d("FE", "onRadioButtonClicked5: ");
+            secondYear_aux.add(7);
+            Log.d("FE", "onRadioButtonClicked5_secondYear: ");
         }
         else
             aux5 --;
 
-        Log.d("Array", "onRadioButtonClicked5: "+ secondYear_aux);
+        Log.d("Array", "onRadioButtonClicked5_secondYear: "+ secondYear_aux);
     }
 
     /**

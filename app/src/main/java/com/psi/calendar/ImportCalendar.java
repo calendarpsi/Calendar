@@ -14,6 +14,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -355,7 +356,7 @@ public class ImportCalendar extends AppCompatActivity implements EasyPermissions
 
             } else {
                 //output.add(0, "Calendrio obtenido de Google CalendarOption API:");
-                //System.out.println(TextUtils.join("\n", output));
+                System.out.println(TextUtils.join("\n", output));
                 continuar();
             }
         }

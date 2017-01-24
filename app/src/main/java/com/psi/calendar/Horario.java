@@ -752,12 +752,15 @@ public class Horario {
         int cantGruposSize = getCantGrupos();
         int[] genRule = new int[cantGruposSize];
         int i = 0;
-        for (Map.Entry<Integer, Integer> entry : MateriasDeInteres.entrySet()) {
-            Materia mat = Materias.get(entry.getValue());
+        //for (Map.Entry<Integer, Integer> entry : MateriasDeInteres.entrySet()) {
+        //    Materia mat = Materias.get(entry.getValue());
+
+        for (int j = 0; j < MateriasDeInteres.size(); j++) {
+            Materia mat = Materias.get(MateriasDeInteres.get(j));
             int cantGrupos = mat.cantGrupos();
             int[] maximos = mat.maximos();
-            for (int j = 0; j < cantGrupos; j++) {
-                genRule[i] = maximos[j];
+            for (int k = 0; k < cantGrupos; k++) {
+                genRule[i] = maximos[k];
                 i++;
             }
         }
@@ -767,8 +770,10 @@ public class Horario {
 
     public int getCantGrupos() {
         int cantGrupos = 0;
-        for (Map.Entry<Integer, Integer> entry : MateriasDeInteres.entrySet()) {
-            Materia mat = Materias.get(entry.getValue());
+ //       for (Map.Entry<Integer, Integer> entry : MateriasDeInteres.entrySet()) {
+//            Materia mat = Materias.get(entry.getValue());
+            for (int j = 0; j < MateriasDeInteres.size(); j++) {
+                Materia mat = Materias.get(MateriasDeInteres.get(j));
             cantGrupos = cantGrupos + mat.cantGrupos();
         }
         this.cantGrupos = cantGrupos;
@@ -814,8 +819,11 @@ public class Horario {
         }
         grupo = gen[count]; //numero del grupo en cuestión
         materiasloop:
-        for (Map.Entry<Integer, Integer> entry : MateriasDeInteres.entrySet()) {
-            Materia mat = Materias.get(entry.getValue());
+//        for (Map.Entry<Integer, Integer> entry : MateriasDeInteres.entrySet()) {
+//            Materia mat = Materias.get(entry.getValue());
+
+            for (int j = 0; j < MateriasDeInteres.size(); j++) {
+                Materia mat = Materias.get(MateriasDeInteres.get(j));
             int cantGrupos = mat.cantGrupos();
             if ((control + cantGrupos) > count) {
                 if (!done) {

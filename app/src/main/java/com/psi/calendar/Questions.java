@@ -110,31 +110,31 @@ public class Questions extends AppCompatActivity{
             //case 'No'
             case R.id.radioButton4:
                 question1 = 0;
-                Log.d("NO", "onRadioButtonClicked1: ");
+                Log.d("NO", "onRadioButtonClicked1: 0");
                 break;
 
             //Case '1h'
             case R.id.radioButton3:
                 question1 = 1;
-                Log.d("1h", "onRadioButtonClicked1: ");
+                Log.d("1h", "onRadioButtonClicked1: 1");
                 break;
 
             //case '2h'
             case R.id.radioButton2:
                 question1 = 2;
-                Log.d("2h", "onRadioButtonClicked1: ");
+                Log.d("2h", "onRadioButtonClicked1: 2");
                 break;
 
             //Case '3h'
             case R.id.radioButton1:
                 question1 = 3;
-                Log.d("3h", "onRadioButtonClicked1: ");
+                Log.d("3h", "onRadioButtonClicked1: 3");
                 break;
 
             //Case '4h'
             case R.id.radioButton:
                 question1 = 4;
-                Log.d("4h", "onRadioButtonClicked1: ");
+                Log.d("4h", "onRadioButtonClicked1: 4");
                 break;
         }
 
@@ -149,25 +149,25 @@ public class Questions extends AppCompatActivity{
             //case 'Mornings'
             case R.id.radioButton4:
                 question2 = 1;
-                Log.d("Morning", "onRadioButtonClicked2: ");
+                Log.d("Morning", "onRadioButtonClicked2: 1");
                 break;
 
             //Case '+ mornin - after'
             case R.id.radioButton3:
                 question2 = 2;
-                Log.d("Mornings rather after", "onRadioButtonClicked2: ");
+                Log.d("Mornings rather after", "onRadioButtonClicked2: 2");
                 break;
 
             //case '+ after - mornin'
             case R.id.radioButton2:
                 question2 = 3;
-                Log.d("Afternoon rather morn", "onRadioButtonClicked2: ");
+                Log.d("Afternoon rather morn", "onRadioButtonClicked2: 3");
                 break;
 
             //Case 'Afternoons'
             case R.id.radioButton:
                 question2 = 4;
-                Log.d("Afternoons", "onRadioButtonClicked2: ");
+                Log.d("Afternoons", "onRadioButtonClicked2: 4");
                 break;
         }
 
@@ -251,13 +251,13 @@ public class Questions extends AppCompatActivity{
             //case '13'
             case R.id.radioButton1:
                 question4 = 13;
-                Log.d("13:00", "onRadioButtonClicked4: ");
+                Log.d("13:00", "onRadioButtonClicked4: 13");
                 break;
 
             //Case '14:00'
             case R.id.radioButton2:
                 question4 = 14;
-                Log.d("14:00", "onRadioButtonClicked4: ");
+                Log.d("14:00", "onRadioButtonClicked4: 14");
                 break;
         }
     }
