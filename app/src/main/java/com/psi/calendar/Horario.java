@@ -37,13 +37,15 @@ public class Horario {
             generarObjetos(raw_input.get(i));
         }
         this.Materias = Materias;
-        this.cantGrupos = getCantGrupos();
+        this.cantGrupos = 0;
+        //this.cantGrupos = getCantGrupos();
     }
 
     public void crearAsignaturasInteres(int[] asigInteres){
         for (int i = 0; i < asigInteres.length; i++) {
             MateriasDeInteres.put(i,asigInteres[i]);
         }
+        this.cantGrupos = getCantGrupos();
     }
 
     public int[][] crearMat_disp() {
@@ -223,16 +225,16 @@ public class Horario {
     }
 
     public void primerCuatri() {
-        Materia AO = new Materia(0, "Arquitectura de Ordenadores", "AO");
-        Materia CAL1 = new Materia(1, "Calculo I", "CAL-I");
-        Materia FMT = new Materia(2, "Fundamentos da Mecánica e Termodinámica", "FMT");
-        Materia ALG = new Materia(3, "Algebra", "ALG");
-        Materia EMP = new Materia(4, "Fundamentos de Empresas", "EMP");
-        Materia CD = new Materia(5, "Comunicacion de datos", "CD");
-        Materia FE = new Materia(6, "Fundamentos de Electronica", "FE");
-        Materia PII = new Materia(7, "Programacion II", "PII");
-        Materia TEM = new Materia(8, "Transmision Electromagnetica", "TEM");
-        Materia PDS = new Materia(9, "Procesado Digital de Senhales", "PDS");
+        Materia AO = new Materia(1, "Arquitectura de Ordenadores", "AO");
+        Materia CAL1 = new Materia(2, "Calculo I", "CAL-I");
+        Materia FMT = new Materia(3, "Fundamentos da Mecánica e Termodinámica", "FMT");
+        Materia ALG = new Materia(4, "Algebra", "ALG");
+        Materia EMP = new Materia(5, "Fundamentos de Empresas", "EMP");
+        Materia CD = new Materia(6, "Comunicacion de datos", "CD");
+        Materia FE = new Materia(7, "Fundamentos de Electronica", "FE");
+        Materia PII = new Materia(8, "Programacion II", "PII");
+        Materia TEM = new Materia(9, "Transmision Electromagnetica", "TEM");
+        Materia PDS = new Materia(10, "Procesado Digital de Senhales", "PDS");
         this.Materias.put(1, AO);
         this.Materias.put(2, CAL1);
         this.Materias.put(3, FMT);
@@ -858,6 +860,17 @@ public class Horario {
                 sesion.setHora(HoraInicio.get(j));
                 sesion.setTipoGrupo(grupoClase.getTipo());
                 sesion.setDia(Dia.get(j));
+                if(i%2==0){
+                    if(gen[i]==1){
+                        sesion.setAula("A");
+                    }else if(gen[i]==2){
+                        sesion.setAula("B");
+                    }else if(gen[i]==3){
+                        sesion.setAula("C");
+                    }
+                }else{
+                    sesion.setAula("B"+i);
+                }
                 export.add(i, sesion);
             }
         }

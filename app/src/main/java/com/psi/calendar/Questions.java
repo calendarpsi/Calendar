@@ -290,7 +290,7 @@ public class Questions extends AppCompatActivity implements Comparator {
 
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox1);
         if (checkBox.isChecked()) {
-            question5_aux.add(3);
+            question5_aux.add(4);
             Log.d("ALG", "onRadioButtonClicked5: ");
         }
         else
@@ -300,7 +300,7 @@ public class Questions extends AppCompatActivity implements Comparator {
 
         checkBox =(CheckBox) findViewById(R.id.checkBox2);
         if (checkBox.isChecked()){
-            question5_aux.add(0);
+            question5_aux.add(1);
             Log.d("AO", "onRadioButtonClicked5: ");
         }
         else
@@ -310,7 +310,7 @@ public class Questions extends AppCompatActivity implements Comparator {
 
         checkBox =(CheckBox) findViewById(R.id.checkBox3);
         if (checkBox.isChecked()){
-            question5_aux.add(4);
+            question5_aux.add(5);
             Log.d("EMP", "onRadioButtonClicked5: ");
         }
         else
@@ -320,7 +320,7 @@ public class Questions extends AppCompatActivity implements Comparator {
 
         checkBox =(CheckBox) findViewById(R.id.checkBox4);
         if (checkBox.isChecked()){
-            question5_aux.add(2);
+            question5_aux.add(3);
             Log.d("FMT", "onRadioButtonClicked5: ");
         }
         else
@@ -330,7 +330,7 @@ public class Questions extends AppCompatActivity implements Comparator {
 
         checkBox =(CheckBox) findViewById(R.id.checkBox5);
         if (checkBox.isChecked()){
-            question5_aux.add(1);
+            question5_aux.add(2);
             Log.d("CAL1", "onRadioButtonClicked5: ");
         }
         else
@@ -352,7 +352,7 @@ public class Questions extends AppCompatActivity implements Comparator {
         /*
         checkBox =(CheckBox) findViewById(R.id.checkBox7);
         if (checkBox.isChecked()){
-            question5_aux.add(5);
+            question5_aux.add(6);
             Log.d("CD", "onRadioButtonClicked5: ");
         }
         else
@@ -362,7 +362,7 @@ public class Questions extends AppCompatActivity implements Comparator {
 
         checkBox =(CheckBox) findViewById(R.id.checkBox8);
         if (checkBox.isChecked()){
-            question5_aux.add(7);
+            question5_aux.add(8);
             Log.d("PII", "onRadioButtonClicked5: ");
         }
         else
@@ -372,7 +372,7 @@ public class Questions extends AppCompatActivity implements Comparator {
 
         checkBox =(CheckBox) findViewById(R.id.checkBox9);
         if (checkBox.isChecked()){
-            question5_aux.add(9);
+            question5_aux.add(10);
             Log.d("PDS", "onRadioButtonClicked5: ");
         }
         else
@@ -382,7 +382,7 @@ public class Questions extends AppCompatActivity implements Comparator {
 
         checkBox =(CheckBox) findViewById(R.id.checkBox10);
         if (checkBox.isChecked()){
-            question5_aux.add(8);
+            question5_aux.add(9);
             Log.d("TEM", "onRadioButtonClicked5: ");
         }
         else
