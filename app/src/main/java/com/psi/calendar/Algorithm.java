@@ -46,6 +46,10 @@ public class Algorithm extends AppCompatActivity {
             e.printStackTrace();
             Log.e("INput read ERROR! Raw", "onCreate: ");
         }
+
+        for (int i = 0; i < question5.length; i++) {
+            Log.i("INFO ALGORITHM", "onCreate: "+question5[i] );
+        }
         elHorario.crearAsignaturasInteres(question5);
         //System.out.println(elHorario.getCantGrupos());
 

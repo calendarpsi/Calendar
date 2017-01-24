@@ -71,7 +71,7 @@ public class FirstSecondYearActivity extends AppCompatActivity implements Compar
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox1);
         if (checkBox.isChecked()) {
             firstSecondYear_Aux.add(4);
-            Log.d("ALG", "onRadioButtonClicked5: ");
+            Log.d("ALG", "onRadioButtonClicked5_first_second_year: ");
         }
         else
             aux5 --;
@@ -81,7 +81,7 @@ public class FirstSecondYearActivity extends AppCompatActivity implements Compar
         checkBox =(CheckBox) findViewById(R.id.checkBox2);
         if (checkBox.isChecked()){
             firstSecondYear_Aux.add(1);
-            Log.d("AO", "onRadioButtonClicked5: ");
+            Log.d("AO", "onRadioButtonClicked5_first_second_year: ");
         }
         else
             aux5 --;
@@ -91,7 +91,7 @@ public class FirstSecondYearActivity extends AppCompatActivity implements Compar
         checkBox =(CheckBox) findViewById(R.id.checkBox3);
         if (checkBox.isChecked()){
             firstSecondYear_Aux.add(5);
-            Log.d("EMP", "onRadioButtonClicked5: ");
+            Log.d("EMP", "onRadioButtonClicked5_first_second_year: ");
         }
         else
             aux5 --;
@@ -101,7 +101,7 @@ public class FirstSecondYearActivity extends AppCompatActivity implements Compar
         checkBox =(CheckBox) findViewById(R.id.checkBox4);
         if (checkBox.isChecked()){
             firstSecondYear_Aux.add(3);
-            Log.d("FMT", "onRadioButtonClicked5: ");
+            Log.d("FMT", "onRadioButtonClicked5_first_second_year: ");
         }
         else
             aux5 --;
@@ -111,7 +111,7 @@ public class FirstSecondYearActivity extends AppCompatActivity implements Compar
         checkBox =(CheckBox) findViewById(R.id.checkBox5);
         if (checkBox.isChecked()){
             firstSecondYear_Aux.add(2);
-            Log.d("CAL1", "onRadioButtonClicked5: ");
+            Log.d("CAL1", "onRadioButtonClicked5_first_second_year: ");
         }
         else
             aux5 --;
@@ -120,7 +120,7 @@ public class FirstSecondYearActivity extends AppCompatActivity implements Compar
         checkBox =(CheckBox) findViewById(R.id.checkBox6);
         if (checkBox.isChecked()){
             firstSecondYear_Aux.add(6);
-            Log.d("CD", "onRadioButtonClicked5: ");
+            Log.d("CD", "onRadioButtonClicked5_first_second_year: ");
         }
         else
             aux5 --;
@@ -130,7 +130,7 @@ public class FirstSecondYearActivity extends AppCompatActivity implements Compar
         checkBox =(CheckBox) findViewById(R.id.checkBox7);
         if (checkBox.isChecked()){
             firstSecondYear_Aux.add(8);
-            Log.d("PII", "onRadioButtonClicked5: ");
+            Log.d("PII", "onRadioButtonClicked5_first_second_year: ");
         }
         else
             aux5 --;
@@ -140,7 +140,7 @@ public class FirstSecondYearActivity extends AppCompatActivity implements Compar
         checkBox =(CheckBox) findViewById(R.id.checkBox8);
         if (checkBox.isChecked()){
             firstSecondYear_Aux.add(10);
-            Log.d("PDS", "onRadioButtonClicked5: ");
+            Log.d("PDS", "onRadioButtonClicked5_first_second_year: ");
         }
         else
             aux5 --;
@@ -150,7 +150,7 @@ public class FirstSecondYearActivity extends AppCompatActivity implements Compar
         checkBox =(CheckBox) findViewById(R.id.checkBox9);
         if (checkBox.isChecked()){
             firstSecondYear_Aux.add(9);
-            Log.d("TEM", "onRadioButtonClicked5: ");
+            Log.d("TEM", "onRadioButtonClicked5_first_second_year: ");
         }
         else
             aux5 --;
@@ -159,13 +159,21 @@ public class FirstSecondYearActivity extends AppCompatActivity implements Compar
 
         checkBox =(CheckBox) findViewById(R.id.checkBox10);
         if (checkBox.isChecked()){
-            firstSecondYear_Aux.add(6);
-            Log.d("FE", "onRadioButtonClicked5: ");
+            firstSecondYear_Aux.add(7);
+            Log.d("FE", "onRadioButtonClicked5_first_second_year: ");
         }
         else
             aux5 --;
 
-        Log.d("Array", "onRadioButtonClicked5: "+firstSecondYear_Aux);
+        if(aux5 > -4){
+            ((CheckBox) view).toggle();
+            Toast.makeText(this, "You can select 6 subjects tops!!"
+                    , Toast.LENGTH_LONG).show();
+            aux5--;
+            firstSecondYear_Aux.remove(firstSecondYear_Aux.remove(firstSecondYear_Aux.size()-1));
+        }
+
+        Log.d("Array", "onRadioButtonClicked5_first_second_year: "+firstSecondYear_Aux);
     }
 
     /**

@@ -71,7 +71,7 @@ public class FirstYearActivity extends AppCompatActivity implements Comparator {
 
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox1);
         if (checkBox.isChecked()) {
-            firstYear_aux.add(5);
+            firstYear_aux.add(4);
             Log.d("ALG", "onRadioButtonClicked5_firstYear: ");
         }
         else
@@ -91,7 +91,7 @@ public class FirstYearActivity extends AppCompatActivity implements Comparator {
 
         checkBox =(CheckBox) findViewById(R.id.checkBox3);
         if (checkBox.isChecked()){
-            firstYear_aux.add(4);
+            firstYear_aux.add(5);
             Log.d("EMP", "onRadioButtonClicked5_firstYear: ");
         }
         else
