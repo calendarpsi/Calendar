@@ -90,6 +90,8 @@
             android:text="@string/question_morningafternoon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
             android:id="@+id/textView3"
             android:fontFamily="cursive"
             android:textColor="@color/cardview_light_background"

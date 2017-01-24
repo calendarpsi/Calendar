@@ -12,117 +12,96 @@
         >
 
         <CheckBox
+            android:layout_marginTop="13dp"
             android:buttonTint="#FFF"
-            android:text="Thursday"
+            android:text="FE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/checkBox11"
             android:layout_below="@+id/checkBox10"
             android:layout_alignStart="@+id/checkBox10"
-            android:layout_marginTop="14dp"
-            android:id="@+id/checkBox11"
-            android:onClick="onCheckboxClicked"
+            android:onClick="onRadioButtonClicked5"
             android:textColor="@color/cardview_light_background"
-            android:fontFamily="sans-serif"
             android:textSize="18sp" />
 
-        <CheckBox
-            android:buttonTint="#FFF"
-            android:text="Friday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/checkBox11"
-            android:layout_alignStart="@+id/checkBox11"
-            android:layout_marginTop="12dp"
-            android:id="@+id/checkBox6"
-            android:onClick="onCheckboxClicked"
-            android:textColor="@color/cardview_light_background"
-            android:fontFamily="sans-serif"
-            android:textSize="18sp" />
 
         <CheckBox
+            android:layout_marginTop="13dp"
             android:buttonTint="#FFF"
-            android:text="Wednesday"
+            android:text="TEM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBox10"
             android:layout_below="@+id/checkBox9"
             android:layout_alignStart="@+id/checkBox9"
-            android:layout_marginTop="14dp"
-            android:onClick="onCheckboxClicked"
+            android:onClick="onRadioButtonClicked5"
             android:textColor="@color/cardview_light_background"
-            android:textSize="18sp"
-            android:fontFamily="sans-serif" />
+            android:textSize="18sp" />
 
 
         <CheckBox
+            android:layout_marginTop="13dp"
             android:buttonTint="#FFF"
-            android:text="Tuesday"
+            android:text="PDS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBox9"
             android:layout_below="@+id/checkBox8"
             android:layout_alignStart="@+id/checkBox8"
-            android:layout_marginTop="10dp"
-            android:onClick="onCheckboxClicked"
+            android:onClick="onRadioButtonClicked5"
             android:textColor="@color/cardview_light_background"
-            android:textSize="18sp"
-            android:fontFamily="sans-serif" />
+            android:textSize="18sp" />
+
 
         <CheckBox
+            android:layout_marginTop="13dp"
             android:buttonTint="#FFF"
-            android:text="Monday"
+            android:text="P-II"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBox8"
             android:layout_below="@+id/checkBox7"
             android:layout_alignStart="@+id/checkBox7"
-            android:layout_marginTop="14dp"
-            android:onClick="onCheckboxClicked"
+            android:onClick="onRadioButtonClicked5"
             android:textColor="@color/cardview_light_background"
-            android:textSize="18sp"
-            android:fontFamily="sans-serif-condensed" />
-
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:background="#FFFF"
-            android:layout_width="match_parent"
-            android:id="@+id/progressBar3"
-            android:progress="60"
-            android:max="100"
-            android:progressDrawable="@drawable/greenprogress"
-            android:layout_weight="1"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_height="7dp" />
+            android:textSize="18sp" />
 
         <CheckBox
             android:buttonTint="#FFF"
-            android:text="Every day"
+            android:text="CD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="47dp"
             android:id="@+id/checkBox7"
-            android:onClick="onCheckboxClicked"
-            android:textColor="@color/cardview_light_background"
-            android:fontFamily="sans-serif"
+            android:layout_marginTop="21dp"
+            android:onClick="onRadioButtonClicked5"
             android:textSize="18sp"
+            android:textColor="@color/cardview_light_background"
             android:layout_below="@+id/textView3"
             android:layout_centerHorizontal="true" />
 
         <TextView
-            android:text="@string/question_dayoff"
+            android:text="@string/question_1stsemester"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:textSize="30sp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            android:id="@+id/textView3"
-            android:fontFamily="cursive"
-            android:textSize="30sp"
-            android:textColor="@color/cardview_light_background"
             android:textAlignment="center"
+            android:fontFamily="cursive"
+            android:textColor="@color/cardview_light_background"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="37dp" />
+            android:layout_marginTop="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true" />
 
+        <ImageView
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/ic_next_white"
+            android:id="@+id/firstYear_toAlgorithm"
+            android:layout_width="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="13dp" />
     </RelativeLayout>
 </LinearLayout>

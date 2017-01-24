@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <ImageView
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/ic_next_white"
+            android:id="@+id/firstYear_toAlgorithm"
+            android:layout_width="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="13dp" />
+
+        <TextView
+            android:text="@string/question_1stsemester"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:textSize="30sp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:textAlignment="center"
+            android:fontFamily="cursive"
+            android:textColor="@color/cardview_light_background"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true" />
+
+        <CheckBox
+            android:buttonTint="#FFF"
+            android:text="ALG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox1"
+            android:layout_marginTop="21dp"
+            android:onClick="onRadioButtonClicked5"
+            android:textSize="18sp"
+            android:textColor="@color/cardview_light_background"
+            android:layout_below="@+id/textView3"
+            android:layout_centerHorizontal="true" />
+
+        <CheckBox
+            android:buttonTint="#FFF"
+            android:text="EMP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox3"
+            android:onClick="onRadioButtonClicked5"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp"
+            android:layout_marginTop="13dp"
+            android:layout_below="@+id/checkBox2"
+            android:layout_alignStart="@+id/checkBox1" />
+
+        <CheckBox
+            android:buttonTint="#FFF"
+            android:text="FMT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox4"
+            android:onClick="onRadioButtonClicked5"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:layout_alignStart="@+id/checkBox2" />
+
+        <CheckBox
+            android:buttonTint="#FFF"
+            android:text="CAL-I"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox5"
+            android:onClick="onRadioButtonClicked5"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp"
+            android:layout_below="@+id/checkBox4"
+            android:layout_alignStart="@+id/checkBox4"
+            android:layout_marginTop="13dp" />
+
+        <CheckBox
+            android:buttonTint="#FFF"
+            android:text="AO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox2"
+            android:onClick="onRadioButtonClicked5"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp"
+            android:layout_marginTop="13dp"
+            android:layout_below="@+id/checkBox1"
+            android:layout_alignStart="@+id/checkBox1" />
+    </RelativeLayout>
+</LinearLayout>
