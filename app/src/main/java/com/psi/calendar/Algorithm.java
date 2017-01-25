@@ -57,7 +57,7 @@ public class Algorithm extends AppCompatActivity {
         int mat_disponibilidad[][];
         int sum_horarioDeseado = 0, sum_horarioGenerado = 0, porcentaje_ocupado = 0;
         //Variables for the Algorithm execution
-        int generationCount = 0, vueltas=50, poblacionSize=50;//Set up parameters //TODO valorar que desde la aplicación se pueda ajustar
+        int generationCount = 0, vueltas= 300, poblacionSize=50;//Set up parameters //TODO valorar que desde la aplicación se pueda ajustar
         //TODO Integración:usar constructor metiendo los parámetros que vengan de las elecciones del usuario: dias_laborable, h_inicio, h_fin, materias[],...
         //elHorario = new Horario();
 
@@ -94,16 +94,29 @@ public class Algorithm extends AppCompatActivity {
         // EXPORT TO CALENDAR --------------------
         //int hora, int duracion, int dia, String nombre, String tipo
         //TODO cambiar estos objetos por las tres salidas del algoritmo: opcion1, opcion2, opcion3
-        ArrayList<Sesion> export = elHorario.exportGen(miPob.getFittest().getGenoma());
+        int[] mejores = miPob.getSeveralFittest(3);
+        //ArrayList<Sesion> export = elHorario.exportGen(miPob.getFittest().getGenoma());
+        ArrayList<Sesion> export1 = elHorario.exportGen(miPob.getIndividual(mejores[0]).getGenoma());
+        ArrayList<Sesion> export2 = elHorario.exportGen(miPob.getIndividual(mejores[1]).getGenoma());
+        ArrayList<Sesion> export3 = elHorario.exportGen(miPob.getIndividual(mejores[2]).getGenoma());
+        for (int i = 0; i < export1.size(); i++) {
+            time_table_1.add(export1.get(i));
+            Log.d("RESU", "onCreate: "+export1.get(i));
 
-        for (int i = 0; i < export.size(); i++) {
-            time_table_1.add(export.get(i));
-            Log.d("RESU", "onCreate: "+export.get(i));
+        }
+        for (int i = 0; i < export2.size(); i++) {
+            time_table_2.add(export2.get(i));
+            Log.d("RESU", "onCreate: "+export2.get(i));
+
+        }
+        for (int i = 0; i < export3.size(); i++) {
+            time_table_3.add(export3.get(i));
+            Log.d("RESU", "onCreate: "+export3.get(i));
 
         }
         AlgorithmOptions.setTime_table_1(time_table_1);
-        //AlgorithmOptions.setTime_table_2(time_table_2);
-        //AlgorithmOptions.setTime_table_3(time_table_3);
+        AlgorithmOptions.setTime_table_2(time_table_2);
+        AlgorithmOptions.setTime_table_3(time_table_3);
         mProgress.hide();
         toCalendarOption();
 

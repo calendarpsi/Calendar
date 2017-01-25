@@ -88,4 +88,35 @@ public class PoblacionHorarios {
 	public void saveIndividual(int index, IndividuoHorario indiv) {
 		individuos[index] = indiv;
 	}
+
+	public int[] getSeveralFittest(int howMany) {
+		//IndividuoHorario fittest = individuos[0];//porque no: IndividuoHorario fittest=getIndividual(0);
+		int fittest=0;
+		int [] fittestFoundIndex = new int[howMany];
+		int found=0;
+		boolean isNot=false;
+
+		// Loop through individuals to find fittest
+		do{
+			for(int i=0;i<fittestFoundIndex.length;i++){//for(all individuals in the population)
+				//if if for now the best...
+				if (individuos[fittest].getFitness() <= getIndividual(i).getFitness()) {
+					//.. we check if is not an individual that we have already saved.
+					// &&individuos[fittest].getGenoma()!= getIndividual(i).getGenoma()
+					for(int k=0;k<found;k++){
+						if(i!=fittestFoundIndex[k] ){
+							isNot=true;
+						}
+					}//If it haven't been saved yet it can be the fittest
+					if(isNot){
+						fittest = i;
+						isNot=false;
+					}
+				}
+			}
+			fittestFoundIndex[found]=fittest;
+			found++;
+		}while(found<howMany);
+		return fittestFoundIndex;
+	}
 }
