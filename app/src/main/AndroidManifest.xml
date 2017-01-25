@@ -32,7 +32,10 @@
         <activity android:name=".CalendarOption" />
         <activity android:name=".Algorithm" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".AlgorithmOptions"></activity>
+        <activity android:name=".AlgorithmOptions" />
+        <activity android:name=".FirstYearActivity" />
+        <activity android:name=".SecondYearActivity" />
+        <activity android:name=".FirstSecondYearActivity"></activity>
     </application>
 
 </manifest>

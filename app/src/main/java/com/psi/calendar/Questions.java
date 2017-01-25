@@ -1,12 +1,11 @@
 package com.psi.calendar;
 
-import android.content.DialogInterface;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,23 +14,23 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
-public class Questions extends AppCompatActivity {
+public class Questions extends AppCompatActivity{
     private ViewPager view1;
+    private LinearLayout firstYear;
     private LinearLayout pagina1;
     private LinearLayout pagina2;
     private LinearLayout pagina3;
     private LinearLayout pagina4;
     private LinearLayout pagina5;
-    private int countPage = 0;
-    private int question1, question2, question4;
-    private ArrayList<String> question3 = new ArrayList<String>(), question5 = new ArrayList<String>();
+    private int question1 = -1, question2 = -1, question4 = -1;
+    private ArrayList<String> question3 = new ArrayList<>();
 
-    //Variables from the third & fifth question
-    private int aux = 0, aux5 = 0;
-    private boolean everyday = false, check_all = false;
+
+    //Variables from the third question
+    private int aux = 0;
+    private boolean everyday = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,31 +110,31 @@ public class Questions extends AppCompatActivity {
             //case 'No'
             case R.id.radioButton4:
                 question1 = 0;
-                Log.d("NO", "onRadioButtonClicked1: ");
+                Log.d("NO", "onRadioButtonClicked1: 0");
                 break;
 
             //Case '1h'
             case R.id.radioButton3:
                 question1 = 1;
-                Log.d("1h", "onRadioButtonClicked1: ");
+                Log.d("1h", "onRadioButtonClicked1: 1");
                 break;
 
             //case '2h'
             case R.id.radioButton2:
                 question1 = 2;
-                Log.d("2h", "onRadioButtonClicked1: ");
+                Log.d("2h", "onRadioButtonClicked1: 2");
                 break;
 
             //Case '3h'
             case R.id.radioButton1:
                 question1 = 3;
-                Log.d("3h", "onRadioButtonClicked1: ");
+                Log.d("3h", "onRadioButtonClicked1: 3");
                 break;
 
             //Case '4h'
             case R.id.radioButton:
                 question1 = 4;
-                Log.d("4h", "onRadioButtonClicked1: ");
+                Log.d("4h", "onRadioButtonClicked1: 4");
                 break;
         }
 
@@ -150,25 +149,25 @@ public class Questions extends AppCompatActivity {
             //case 'Mornings'
             case R.id.radioButton4:
                 question2 = 1;
-                Log.d("Morning", "onRadioButtonClicked2: ");
+                Log.d("Morning", "onRadioButtonClicked2: 1");
                 break;
 
             //Case '+ mornin - after'
             case R.id.radioButton3:
                 question2 = 2;
-                Log.d("Mornings rather after", "onRadioButtonClicked2: ");
+                Log.d("Mornings rather after", "onRadioButtonClicked2: 2");
                 break;
 
             //case '+ after - mornin'
             case R.id.radioButton2:
                 question2 = 3;
-                Log.d("Afternoon rather morn", "onRadioButtonClicked2: ");
+                Log.d("Afternoon rather morn", "onRadioButtonClicked2: 3");
                 break;
 
             //Case 'Afternoons'
             case R.id.radioButton:
                 question2 = 4;
-                Log.d("Afternoons", "onRadioButtonClicked2: ");
+                Log.d("Afternoons", "onRadioButtonClicked2: 4");
                 break;
         }
 
@@ -184,9 +183,9 @@ public class Questions extends AppCompatActivity {
         question3 = new ArrayList<String>();
 
         //Checked one day of the week - PAGE 3
-        if (view.getId() == R.id.checkBox2
-                || view.getId() == R.id.checkBox3
-                || view.getId() == R.id.checkBox4 || view.getId() == R.id.checkBox5
+        if (view.getId() == R.id.checkBox8
+                || view.getId() == R.id.checkBox9
+                || view.getId() == R.id.checkBox10 || view.getId() == R.id.checkBox11
                 || view.getId() == R.id.checkBox6) {
             if (checked)
                 aux++;
@@ -194,7 +193,7 @@ public class Questions extends AppCompatActivity {
                 aux--;
         }
         //Checked Everyday - PAG 3
-        else if (view.getId() == R.id.checkBox1) {
+        else if (view.getId() == R.id.checkBox7) {
             if (checked) {
                 everyday = true;
                 aux++;
@@ -221,19 +220,19 @@ public class Questions extends AppCompatActivity {
         //          This piece of code adds to an array of strings
         //                the name of the checkbox clicked.
         //*******************************************************************************
-        CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox1);
+        CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox7);
         if (checkBox.isChecked())
             question3.add("ev");
-        checkBox =(CheckBox) findViewById(R.id.checkBox2);
+        checkBox =(CheckBox) findViewById(R.id.checkBox8);
         if (checkBox.isChecked())
             question3.add("lu");
-        checkBox =(CheckBox) findViewById(R.id.checkBox3);
+        checkBox =(CheckBox) findViewById(R.id.checkBox9);
         if (checkBox.isChecked())
             question3.add("ma");
-        checkBox =(CheckBox) findViewById(R.id.checkBox4);
+        checkBox =(CheckBox) findViewById(R.id.checkBox10);
         if (checkBox.isChecked())
             question3.add("mi");
-        checkBox =(CheckBox) findViewById(R.id.checkBox5);
+        checkBox =(CheckBox) findViewById(R.id.checkBox11);
         if (checkBox.isChecked())
             question3.add("ju");
         checkBox =(CheckBox) findViewById(R.id.checkBox6);
@@ -252,109 +251,75 @@ public class Questions extends AppCompatActivity {
             //case '13'
             case R.id.radioButton1:
                 question4 = 13;
-                Log.d("13:00", "onRadioButtonClicked4: ");
+                Log.d("13:00", "onRadioButtonClicked4: 13");
                 break;
 
             //Case '14:00'
             case R.id.radioButton2:
-                question4 = 13;
-                Log.d("14:00", "onRadioButtonClicked4: ");
+                question4 = 14;
+                Log.d("14:00", "onRadioButtonClicked4: 14");
                 break;
         }
     }
 
-    //***********************************************************************************
-    //          Page 5 - Checkboxes - "Select subjects from the 1st semester"
-    //
-    //***********************************************************************************
-    public void onRadioButtonClicked5(View view) {
-        question5.clear();
-        aux5 = 0;
-
-        CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox1);
-        if (checkBox.isChecked()) {
-            question5.add("ALG");
-            Log.d("ALG", "onRadioButtonClicked5: ");
+    public void toFirstYear(View view){
+        if (question3.isEmpty() || question1 == -1 || question2 == -1 || question4 == -1){
+            Context context = getApplicationContext();
+            CharSequence text = "Please, complete all the questions.";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }else {
+            Intent intent = new Intent(this, FirstYearActivity.class);
+            Bundle info = new Bundle();
+            info.putSerializable("question3", question3);
+            intent.putExtras(info);
+            intent.putExtra("question1", String.valueOf(question1));
+            intent.putExtra("question2", String.valueOf(question2));
+            intent.putExtra("question4", String.valueOf(question4));
+            startActivity(intent);
+            this.finish();
         }
-        else
-            aux5 --;
-        checkBox =(CheckBox) findViewById(R.id.checkBox2);
-        if (checkBox.isChecked()){
-            question5.add("AO");
-            Log.d("AO", "onRadioButtonClicked5: ");
-        }
-        else
-            aux5 --;
-        checkBox =(CheckBox) findViewById(R.id.checkBox3);
-        if (checkBox.isChecked()){
-            question5.add("EMP");
-            Log.d("EMP", "onRadioButtonClicked5: ");
-        }
-        else
-            aux5 --;
-        checkBox =(CheckBox) findViewById(R.id.checkBox4);
-        if (checkBox.isChecked()){
-            question5.add("FMT");
-            Log.d("FMT", "onRadioButtonClicked5: ");
-        }
-        else
-            aux5 --;
-        checkBox =(CheckBox) findViewById(R.id.checkBox5);
-        if (checkBox.isChecked()){
-            question5.add("CAL1");
-            Log.d("CAL1", "onRadioButtonClicked5: ");
-        }
-        else
-            aux5 --;
-        checkBox =(CheckBox) findViewById(R.id.checkBox6);
-        if (checkBox.isChecked()){
-            check_all = true;
-            question5.add("ALL");
-            Log.d("CHECK ALL!", "onRadioButtonClicked5: ");
-
-        }
-        else
-            check_all = false;
-
-        //Forbidds checking one of the subjects and "Check all" at the same time.
-        if (check_all == true && (aux5 > -5)) {
-            ((CheckBox) view).toggle();
-            Toast.makeText(this, "You can select several subjects, or ALL instead. "
-                    , Toast.LENGTH_LONG).show();
-
-            if(view.toString().contains("id/checkBox6"))
-                question5.remove(question5.indexOf("ALL"));
-            else
-                question5.remove(0);
-
-        }
-
-        Log.d("Array", "onRadioButtonClicked5: "+question5);
     }
 
-    /**
-     * Next Activity
-     * @param view
-     */
-    public void onButtonClicked(View view){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle("The algorithm is about to start...");
-        alertDialogBuilder
-                .setMessage("Do you want to continue?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent = new Intent(Questions.this,Algorithm.class);
-                        startActivity(intent);
-                        Questions.this.finish();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+    public void toSecondYear(View view){
+        if (question3.isEmpty() || question1 == -1 || question2 == -1 || question4 == -1){
+            Context context = getApplicationContext();
+            CharSequence text = "Please, complete all the questions.";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }else {
+            Intent intent = new Intent(this, SecondYearActivity.class);
+            Bundle info = new Bundle();
+            info.putSerializable("question3", question3);
+            intent.putExtras(info);
+            intent.putExtra("question1", String.valueOf(question1));
+            intent.putExtra("question2", String.valueOf(question2));
+            intent.putExtra("question4", String.valueOf(question4));
+            startActivity(intent);
+            this.finish();
+        }
     }
+
+    public void toFirstSecondYear(View view){
+        if (question3.isEmpty() || question1 == -1 || question2 == -1 || question4 == -1){
+            Context context = getApplicationContext();
+            CharSequence text = "Please, complete all the questions.";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }else {
+            Intent intent = new Intent(this, FirstSecondYearActivity.class);
+            Bundle info = new Bundle();
+            info.putSerializable("question3", question3);
+            intent.putExtras(info);
+            intent.putExtra("question1", String.valueOf(question1));
+            intent.putExtra("question2", String.valueOf(question2));
+            intent.putExtra("question4", String.valueOf(question4));
+            startActivity(intent);
+            this.finish();
+        }
+    }
+
 }

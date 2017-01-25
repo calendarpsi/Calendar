@@ -2,117 +2,141 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:layout_alignParentTop="true"
+    android:weightSum="1">
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="503dp"
-        android:background="#FFFF"
-        >
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:srcCompat="@drawable/icon"
-            android:id="@+id/imageView"
-            android:layout_marginTop="42dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="18dp" />
+        android:layout_height="95dp">
 
-        <TextView
-            android:text="@string/question_1stsemester"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView3"
-            android:layout_marginTop="27dp"
-            android:layout_below="@+id/imageView"
-            android:layout_alignStart="@+id/imageView" />
-
-        <CheckBox
-            android:text="CHECK ALL!"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox6"
-            android:layout_below="@+id/checkBox5"
-            android:layout_alignStart="@+id/checkBox5"
-            android:onClick="onRadioButtonClicked5"/>
-
-        <CheckBox
-            android:text="Cálculo I"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox5"
-            android:layout_below="@+id/checkBox4"
-            android:layout_alignStart="@+id/checkBox4"
-            android:onClick="onRadioButtonClicked5"/>
-
-
-        <CheckBox
-            android:text="Fundamentos de mecánica y termodinámica"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox4"
-            android:layout_below="@+id/checkBox3"
-            android:layout_alignStart="@+id/checkBox3"
-            android:onClick="onRadioButtonClicked5"/>
-
-
-        <CheckBox
-            android:text="Fundamentos de empresa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox3"
-            android:layout_below="@+id/checkBox2"
-            android:layout_alignStart="@+id/checkBox2"
-            android:onClick="onRadioButtonClicked5"/>
-
-
-        <CheckBox
-            android:text="Arquitectura de Ordenadores"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox2"
-            android:layout_below="@+id/checkBox1"
-            android:layout_alignStart="@+id/checkBox1"
-            android:onClick="onRadioButtonClicked5"/>
-
-
-        <CheckBox
-            android:text="Álgebra I"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox1"
-            android:layout_marginTop="25dp"
-            android:layout_below="@+id/textView3"
-            android:layout_alignStart="@+id/textView3"
-            android:onClick="onRadioButtonClicked5"/>
-
-
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:background="#FFFF"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:id="@+id/progressBar3"
-            android:progress="100"
-            android:max="100"
-            android:progressDrawable="@drawable/greenprogress"
-            android:layout_weight="1"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_height="7dp" />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Grade:"
+                android:layout_width="match_parent"
+                android:layout_height="98dp"
+                android:id="@+id/textView8"
+                android:textSize="70sp"
+                android:fontFamily="cursive"
+                android:textColor="#FFF"
+                android:textAlignment="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="#80CBC4"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:id="@+id/firstYear"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:onClick="toFirstYear"
+                android:layout_width="100dp"
+                app:srcCompat="@drawable/ic_number_1_drawing"
+                android:id="@+id/imageView3"
+                android:layout_height="100dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="#4DB6AC"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="168dp"
+        android:id="@+id/secondYear">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:onClick="toSecondYear"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/ic_number_2_drawing"
+                android:id="@+id/imageView"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/thirdYear">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:onClick="toFirstSecondYear"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/ic_ampersand"
+                android:id="@+id/imageView5"
+                android:layout_alignBottom="@+id/imageView2"
+                android:layout_centerHorizontal="true" />
+
+            <ImageView
+                android:onClick="toFirstSecondYear"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/ic_number_2_drawing"
+                android:id="@+id/imageView6"
+                android:layout_alignBottom="@+id/imageView5"
+                android:layout_alignStart="@+id/imageView5"
+                android:layout_marginStart="31dp" />
 
 
-        <ImageView
-            android:layout_height="50dp"
-            app:srcCompat="@drawable/ic_next"
-            android:id="@+id/imageView2"
-            android:onClick="onButtonClicked"
-            android:layout_width="50dp"
-            android:layout_marginBottom="27dp"
-            android:layout_above="@+id/progressBar3"
-            android:layout_alignEnd="@+id/checkBox3" />
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:background="#FFFF"
+                android:layout_width="match_parent"
+                android:id="@+id/progressBar3"
+                android:progress="100"
+                android:max="100"
+                android:progressDrawable="@drawable/greenprogress"
+                android:layout_weight="1"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_height="7dp" />
 
-    </RelativeLayout>
+            <ImageView
+                android:onClick="toFirstSecondYear"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/ic_number_1_drawing"
+                android:id="@+id/imageView2"
+                android:layout_centerVertical="true"
+                android:layout_alignEnd="@+id/imageView5"
+                android:layout_marginEnd="35dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
 </LinearLayout>
