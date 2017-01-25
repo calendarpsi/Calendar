@@ -877,7 +877,7 @@ public class Horario {
                         sesion.setAula("C");
                     }
                 }else{
-                    sesion.setAula("B"+i);
+                    sesion.setAula(grupoClase.getId());
                 }
                 export.add(i, sesion);
             }

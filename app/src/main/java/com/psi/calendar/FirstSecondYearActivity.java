@@ -70,7 +70,7 @@ public class FirstSecondYearActivity extends AppCompatActivity implements Compar
 
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox1);
         if (checkBox.isChecked()) {
-            firstSecondYear_Aux.add(4);
+            firstSecondYear_Aux.add(5);
             Log.d("ALG", "onRadioButtonClicked5_first_second_year: ");
         }
         else
@@ -90,7 +90,7 @@ public class FirstSecondYearActivity extends AppCompatActivity implements Compar
 
         checkBox =(CheckBox) findViewById(R.id.checkBox3);
         if (checkBox.isChecked()){
-            firstSecondYear_Aux.add(5);
+            firstSecondYear_Aux.add(4);
             Log.d("EMP", "onRadioButtonClicked5_first_second_year: ");
         }
         else
